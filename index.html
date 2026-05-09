@@ -1,0 +1,2270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="NooknKey — A restored 1890 Victorian in The Nations, Nashville. Sleeps 12. Book direct, skip the fees." />
+  <title>NooknKey — A Restored 1890 Victorian · Nashville</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ivory: #F5EFE6;
+      --ivory-soft: #FAF5EC;
+      --ivory-dim: #E8DFCE;
+      --charcoal: #1A1611;
+      --charcoal-soft: #2C2620;
+      --emerald: #1F4A3D;
+      --emerald-deep: #143226;
+      --emerald-darker: #0E2419;
+      --brass: #B89968;
+      --brass-light: #D4B584;
+      --brass-deep: #8E7449;
+      --burgundy: #7A2222;
+      --burgundy-bright: #9B2C2C;
+      --warm-grey: #6B6359;
+      --line: rgba(26, 22, 17, 0.12);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Lora', Georgia, serif;
+      background: var(--ivory);
+      color: var(--charcoal);
+      line-height: 1.65;
+      font-size: 17px;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .display { font-family: 'Fraunces', serif; font-weight: 400; line-height: 1.02; letter-spacing: -0.02em; }
+    .eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--brass);
+      font-weight: 500;
+    }
+
+    /* ═══════════ NAV ═══════════ */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 48px;
+      background: transparent;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .nav.scrolled {
+      background: rgba(245, 239, 230, 0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+      padding: 14px 48px;
+    }
+    .nav-logo {
+      font-family: 'Fraunces', serif; font-weight: 500; font-size: 24px;
+      color: #FFF; text-decoration: none;
+      display: flex; align-items: center; gap: 12px;
+      transition: color 0.4s;
+    }
+    .nav.scrolled .nav-logo { color: var(--charcoal); }
+    .nav-logo-mark {
+      width: 32px; height: 32px;
+      border: 1.2px solid currentColor;
+      border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: 'Fraunces', serif; font-style: italic; font-size: 16px;
+    }
+    .nav-links { display: flex; gap: 36px; align-items: center; }
+    .nav-links a {
+      font-family: 'Lora', serif; font-size: 14.5px;
+      color: #FFF; text-decoration: none;
+      letter-spacing: 0.03em; transition: all 0.3s;
+      position: relative;
+    }
+    .nav.scrolled .nav-links a { color: var(--charcoal); }
+    .nav-links a:hover { color: var(--brass-light); }
+    .nav.scrolled .nav-links a:hover { color: var(--emerald); }
+    .nav-links a::after {
+      content: ''; position: absolute; left: 0; bottom: -5px; height: 1px;
+      width: 0; background: currentColor; transition: width 0.4s;
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    .book-btn {
+      background: var(--burgundy);
+      color: #FFFFFF !important;
+      padding: 12px 26px;
+      font-family: 'DM Mono', monospace; font-size: 12px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      text-decoration: none; cursor: pointer;
+      transition: all 0.3s;
+      border-radius: 2px;
+      font-weight: 500;
+    }
+    .book-btn:hover {
+      background: var(--burgundy-bright);
+      color: #FFFFFF !important;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(122, 34, 34, 0.4);
+    }
+    .book-btn::after { display: none !important; }
+    .nav.scrolled .book-btn { color: #FFFFFF !important; }
+
+    .book-floating {
+      position: fixed; bottom: 28px; right: 28px; z-index: 99;
+      background: var(--burgundy); color: #FFFFFF;
+      padding: 16px 28px;
+      font-family: 'DM Mono', monospace; font-size: 12px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      text-decoration: none; font-weight: 600;
+      border-radius: 50px;
+      box-shadow: 0 14px 36px rgba(122, 34, 34, 0.45);
+      transition: all 0.3s ease;
+      animation: pulse 2.8s infinite;
+    }
+    .book-floating:hover { background: var(--burgundy-bright); transform: scale(1.05); }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 14px 36px rgba(122, 34, 34, 0.45); }
+      50% { box-shadow: 0 14px 44px rgba(122, 34, 34, 0.65), 0 0 0 10px rgba(122, 34, 34, 0.08); }
+    }
+
+    /* ═══════════ EMAIL POPUP ═══════════ */
+    .email-popup {
+      position: fixed;
+      bottom: 28px; left: 28px;
+      z-index: 98;
+      width: 360px;
+      background: var(--ivory);
+      border: 1px solid var(--brass);
+      padding: 28px 26px 24px;
+      box-shadow: 0 18px 50px rgba(26, 22, 17, 0.2);
+      transform: translateY(150%);
+      opacity: 0;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .email-popup.show { transform: translateY(0); opacity: 1; }
+    .email-popup-close {
+      position: absolute; top: 10px; right: 12px;
+      width: 28px; height: 28px;
+      background: none; border: none; cursor: pointer;
+      font-family: 'Fraunces', serif; font-size: 22px;
+      color: var(--warm-grey); line-height: 1;
+      transition: color 0.3s;
+    }
+    .email-popup-close:hover { color: var(--charcoal); }
+    .email-popup .eyebrow { display: block; margin-bottom: 10px; font-size: 10px; }
+    .email-popup h4 {
+      font-family: 'Fraunces', serif; font-weight: 400;
+      font-size: 22px; line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--charcoal);
+      margin-bottom: 10px;
+    }
+    .email-popup h4 em {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      color: var(--emerald);
+    }
+    .email-popup p {
+      font-size: 14px; line-height: 1.5;
+      color: var(--warm-grey);
+      margin-bottom: 16px;
+    }
+    .email-popup-form {
+      display: flex; gap: 0;
+      border: 1px solid var(--charcoal);
+    }
+    .email-popup-form input {
+      flex: 1; padding: 12px 14px;
+      border: none; background: transparent;
+      font-family: 'Lora', serif; font-size: 13px;
+      color: var(--charcoal); outline: none;
+      min-width: 0;
+    }
+    .email-popup-form button {
+      background: var(--charcoal); color: var(--ivory);
+      padding: 12px 18px;
+      border: none; cursor: pointer;
+      font-family: 'DM Mono', monospace; font-size: 10px;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      transition: background 0.3s;
+    }
+    .email-popup-form button:hover { background: var(--emerald); }
+
+    /* ═══════════ HERO (full-screen) ═══════════ */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 720px;
+      width: 100%;
+      overflow: hidden;
+      background: var(--charcoal);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://res.cloudinary.com/dmrelunw0/image/upload/v1778161076/01-exterior-front-new_ivvlht.jpg');
+      background-size: cover;
+      background-position: center 45%;
+      animation: heroSlowZoom 22s ease-out forwards;
+    }
+    @keyframes heroSlowZoom {
+      from { transform: scale(1.05); }
+      to { transform: scale(1); }
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.15) 30%, rgba(0,0,0,0.55) 100%);
+    }
+    .hero-content {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 100px 40px 120px;
+      text-align: center;
+      color: #FFF;
+    }
+    .hero h1 {
+      font-size: clamp(60px, 9.5vw, 142px);
+      font-weight: 400;
+      letter-spacing: -0.025em;
+      line-height: 0.96;
+      margin-bottom: 36px;
+      max-width: 1100px;
+      opacity: 0;
+      animation: fadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+    }
+    .hero h1 em {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 400;
+      color: var(--brass-light);
+    }
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-weight: 400;
+      font-size: clamp(20px, 2.3vw, 28px);
+      line-height: 1.5;
+      max-width: 720px;
+      color: rgba(255, 255, 255, 0.94);
+      opacity: 0;
+      animation: fadeUp 1.4s ease 0.7s forwards;
+    }
+    .hero-eyebrow-bottom {
+      position: absolute; bottom: 56px; left: 0; right: 0;
+      text-align: center;
+      color: var(--brass-light) !important;
+      font-size: 13px !important;
+      letter-spacing: 0.4em !important;
+      opacity: 0;
+      animation: fadeUp 1.4s ease 1.0s forwards;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ═══════════ BOOKING SECTION ═══════════ */
+    .booking {
+      background: var(--ivory-soft);
+      padding: 110px 60px;
+      position: relative;
+    }
+    .booking-inner {
+      max-width: 1180px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.1fr;
+      gap: 72px; align-items: center;
+    }
+    .booking-info { padding-right: 16px; }
+    .booking-info .eyebrow { display: block; margin-bottom: 22px; }
+    .booking-info h2 {
+      font-family: 'Fraunces', serif; font-weight: 400;
+      font-size: clamp(44px, 5vw, 68px);
+      line-height: 1.0;
+      letter-spacing: -0.025em;
+      margin-bottom: 24px;
+      color: var(--charcoal);
+    }
+    .booking-info h2 em {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      color: var(--burgundy);
+    }
+    .booking-info > p {
+      font-size: 16px; line-height: 1.65;
+      color: var(--charcoal-soft);
+      margin-bottom: 28px;
+    }
+    .perks { list-style: none; margin: 28px 0; }
+    .perks li {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+      display: flex; align-items: flex-start; gap: 18px;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    .perks li:last-child { border-bottom: none; }
+    .perks-icon, .roman-stat {
+      width: 32px; height: 32px; flex-shrink: 0;
+      border: 1px solid var(--brass);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 14px;
+      color: var(--emerald);
+    }
+    .perks li strong {
+      font-weight: 500; color: var(--charcoal);
+      display: block; margin-bottom: 3px;
+    }
+
+    .payment-strip {
+      display: flex; align-items: center; gap: 12px;
+      flex-wrap: wrap;
+      padding-top: 24px;
+      margin-top: 8px;
+      border-top: 1px solid var(--line);
+    }
+    .payment-strip .pay-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--warm-grey);
+      margin-right: 4px;
+    }
+    .pay-logo {
+      height: 22px; width: auto;
+      display: inline-flex;
+      opacity: 0.85;
+      transition: opacity 0.3s;
+    }
+    .pay-logo:hover { opacity: 1; }
+
+    .book-widget {
+      background: var(--ivory);
+      padding: 40px 36px 28px;
+      border: 1px solid var(--brass);
+      position: relative;
+    }
+    .book-widget::before {
+      content: '';
+      position: absolute; top: 8px; left: 8px;
+      right: -8px; bottom: -8px;
+      border: 1px solid var(--brass);
+      z-index: -1;
+    }
+    .book-widget .eyebrow { display: block; margin-bottom: 12px; text-align: center; font-size: 10px; }
+    .book-widget h3 {
+      font-family: 'Fraunces', serif; font-size: 28px; font-weight: 400;
+      letter-spacing: -0.01em;
+      text-align: center; margin-bottom: 26px;
+      color: var(--charcoal);
+    }
+    .form-row { margin-bottom: 14px; }
+    .form-row label {
+      font-family: 'DM Mono', monospace; font-size: 9px;
+      letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--warm-grey); display: block; margin-bottom: 6px;
+    }
+    .form-row input {
+      width: 100%; padding: 13px 14px;
+      background: var(--ivory-soft);
+      border: 1px solid var(--line);
+      font-family: 'Lora', serif; font-size: 14px;
+      color: var(--charcoal); outline: none;
+      transition: border 0.25s;
+    }
+    .form-row input:focus { border-color: var(--emerald); }
+    .form-row-double { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    .counter {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 8px 14px;
+      background: var(--ivory-soft);
+      border: 1px solid var(--line);
+      transition: border 0.25s;
+    }
+    .counter:focus-within { border-color: var(--emerald); }
+    .counter-btn {
+      width: 32px; height: 32px;
+      border: 1px solid var(--brass);
+      background: var(--ivory);
+      color: var(--charcoal);
+      font-family: 'Fraunces', serif;
+      font-size: 18px; font-weight: 400;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+      border-radius: 50%;
+      line-height: 1; padding: 0;
+    }
+    .counter-btn:hover:not(:disabled) {
+      background: var(--emerald);
+      color: var(--ivory);
+      border-color: var(--emerald);
+    }
+    .counter-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+    .counter-display {
+      font-family: 'Lora', serif;
+      font-size: 16px;
+      color: var(--charcoal);
+      flex: 1; text-align: center;
+      font-weight: 500;
+    }
+    .counter-display.overflow {
+      color: var(--burgundy);
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+    }
+    .pet-fee-note {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--warm-grey);
+      margin-top: 6px;
+      padding-left: 2px;
+    }
+
+    .check-availability {
+      width: 100%; margin-top: 18px;
+      background: var(--emerald); color: var(--ivory);
+      padding: 16px;
+      border: none;
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      letter-spacing: 0.24em; text-transform: uppercase; font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .check-availability:hover { background: var(--emerald-deep); }
+    .check-availability.inquiry-mode { background: var(--burgundy); }
+    .check-availability.inquiry-mode:hover { background: var(--burgundy-bright); }
+
+    .widget-note {
+      text-align: center; margin-top: 14px;
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 13px; color: var(--warm-grey);
+    }
+    .widget-trust {
+      display: flex; align-items: center; justify-content: center;
+      gap: 6px; margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      font-family: 'DM Mono', monospace; font-size: 9px;
+      color: var(--warm-grey);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .widget-trust svg { width: 12px; height: 12px; }
+    .widget-contact { text-align: center; margin-top: 10px; padding-top: 10px; }
+    .widget-contact a {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--emerald);
+      text-decoration: none;
+      border-bottom: 1px solid var(--brass);
+      transition: color 0.3s;
+    }
+    .widget-contact a:hover { color: var(--burgundy); }
+
+    /* ═══════════ INQUIRY MODAL ═══════════ */
+    .inquiry-overlay {
+      position: fixed; inset: 0;
+      background: rgba(26, 22, 17, 0.6);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center; justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .inquiry-overlay.show { display: flex; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .inquiry-modal {
+      background: var(--ivory);
+      max-width: 540px; width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 48px 44px 40px;
+      position: relative;
+      border: 1px solid var(--brass);
+    }
+    .inquiry-close {
+      position: absolute; top: 16px; right: 18px;
+      width: 32px; height: 32px;
+      background: none; border: none; cursor: pointer;
+      font-family: 'Fraunces', serif; font-size: 26px;
+      color: var(--warm-grey);
+      transition: color 0.3s;
+      line-height: 1;
+    }
+    .inquiry-close:hover { color: var(--charcoal); }
+    .inquiry-modal .eyebrow { display: block; margin-bottom: 14px; }
+    .inquiry-modal h3 {
+      font-family: 'Fraunces', serif; font-weight: 400;
+      font-size: 32px;
+      letter-spacing: -0.015em;
+      line-height: 1.05;
+      margin-bottom: 14px;
+      color: var(--charcoal);
+    }
+    .inquiry-modal h3 em {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      color: var(--emerald);
+    }
+    .inquiry-modal > p {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 17px;
+      color: var(--warm-grey);
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+    .inquiry-form .form-row { margin-bottom: 14px; }
+    .inquiry-form input,
+    .inquiry-form textarea {
+      width: 100%;
+      padding: 13px 14px;
+      background: var(--ivory-soft);
+      border: 1px solid var(--line);
+      font-family: 'Lora', serif; font-size: 14px;
+      color: var(--charcoal);
+      outline: none;
+      transition: border 0.25s;
+      resize: vertical;
+    }
+    .inquiry-form input:focus,
+    .inquiry-form textarea:focus { border-color: var(--emerald); }
+    .inquiry-form textarea { min-height: 80px; }
+    .inquiry-submit {
+      width: 100%;
+      margin-top: 18px;
+      background: var(--burgundy); color: var(--ivory);
+      padding: 16px;
+      border: none;
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      letter-spacing: 0.24em; text-transform: uppercase; font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .inquiry-submit:hover { background: var(--burgundy-bright); }
+
+    /* ═══════════ SECTION HEADERS ═══════════ */
+    section { padding: 140px 60px; }
+    .section-header {
+      text-align: center; max-width: 900px; margin: 0 auto 96px;
+    }
+    .section-header .eyebrow { display: block; margin-bottom: 32px; }
+    .section-header h2 {
+      font-family: 'Fraunces', serif; font-weight: 400;
+      font-size: clamp(64px, 8vw, 110px);
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+      margin-bottom: 36px;
+      color: var(--charcoal);
+    }
+    .section-header h2 em {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      color: var(--emerald);
+    }
+    .section-header p {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 22px; color: var(--warm-grey);
+      max-width: 640px; margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* ═══════════ TRANSFORMATION ═══════════ */
+    .transformation {
+      background: var(--charcoal);
+      color: var(--ivory);
+      padding: 160px 60px;
+    }
+    .transformation .section-header h2 { color: var(--ivory); }
+    .transformation .section-header h2 em { color: var(--brass-light); }
+    .transformation .section-header p { color: rgba(245, 239, 230, 0.65); }
+    .transformation .eyebrow { color: var(--brass-light); }
+    .transformation-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      max-width: 1380px; margin: 0 auto;
+    }
+    .trans-card {
+      position: relative;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .trans-card img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+    /* Pastel Room — pan crop right per item #6 */
+    .trans-card.pastel-room img {
+      object-position: 75% center;
+    }
+    .trans-card:hover img { transform: scale(1.05); }
+    .trans-card-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 36px 32px;
+      background: linear-gradient(to top, rgba(0,0,0,0.92), rgba(0,0,0,0.4) 60%, transparent);
+      color: var(--ivory);
+    }
+    .trans-card-overlay .label {
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--brass-light); margin-bottom: 8px;
+    }
+    .trans-card-overlay .name {
+      font-family: 'Fraunces', serif; font-size: 26px; font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+    .transformation-note {
+      max-width: 800px; margin: 80px auto 0;
+      text-align: center;
+      padding-top: 60px;
+      border-top: 1px solid rgba(184, 153, 104, 0.3);
+    }
+    .transformation-note p {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 28px; line-height: 1.4;
+      color: var(--ivory-dim);
+    }
+
+    /* ═══════════ REVIEWS ═══════════ */
+    .reviews {
+      background: var(--emerald-darker);
+      padding: 180px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .reviews::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      width: 800px; height: 800px;
+      transform: translate(-50%, -40%);
+      background: radial-gradient(circle, rgba(184, 153, 104, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .reviews .section-header { position: relative; z-index: 2; }
+    .reviews .section-header h2 { color: var(--ivory); }
+    .reviews .section-header h2 em { color: var(--brass-light); }
+    .reviews .section-header p { color: rgba(245, 239, 230, 0.7); }
+    .reviews .eyebrow { color: var(--brass-light); }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr 1fr;
+      gap: 32px;
+      max-width: 1380px;
+      margin: 0 auto;
+      align-items: stretch;
+      position: relative;
+      z-index: 2;
+    }
+    .review-card {
+      background: var(--ivory);
+      padding: 52px 38px 44px;
+      position: relative;
+      border-top: 2px solid var(--brass);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .review-card.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .review-card:nth-child(1).in-view { transition-delay: 0.1s; }
+    .review-card:nth-child(2).in-view { transition-delay: 0.25s; }
+    .review-card:nth-child(3).in-view { transition-delay: 0.4s; }
+
+    .review-card.featured {
+      background: var(--emerald);
+      color: var(--ivory);
+      padding: 60px 44px 48px;
+      border-top: 2px solid var(--brass-light);
+      transform: translateY(40px) scale(1.02);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    }
+    .review-card.featured.in-view { transform: translateY(0) scale(1.04); }
+    .review-card.featured .review-text { color: var(--ivory); }
+    .review-card.featured .review-author { color: var(--ivory); }
+    .review-card.featured .review-author::before { background: var(--brass-light); }
+    .review-card.featured .review-quote { color: var(--brass-light); opacity: 0.5; }
+    .review-card.featured .featured-tag {
+      position: absolute;
+      top: -14px; left: 36px;
+      background: var(--brass);
+      color: var(--charcoal);
+      padding: 6px 14px;
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .review-quote {
+      font-family: 'Fraunces', serif; font-size: 110px;
+      color: var(--brass); line-height: 0.4;
+      position: absolute; top: 36px; right: 32px;
+      opacity: 0.35;
+    }
+    .review-stars {
+      color: var(--brass); margin-bottom: 18px;
+      font-size: 15px; letter-spacing: 5px;
+    }
+    .review-card.featured .review-stars { color: var(--brass-light); }
+    .review-text {
+      font-family: 'Cormorant Garamond', serif; font-size: 20px;
+      font-style: italic; line-height: 1.55; margin-bottom: 28px;
+      color: var(--charcoal-soft);
+      flex: 1;
+    }
+    .review-card.featured .review-text { font-size: 22px; }
+    .review-author {
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--charcoal);
+      display: flex; align-items: center; gap: 14px;
+    }
+    .review-author::before {
+      content: '';
+      width: 28px; height: 1px; background: var(--brass);
+    }
+
+    .reviews-platforms {
+      text-align: center;
+      margin-top: 96px;
+      padding-top: 64px;
+      border-top: 1px solid rgba(184, 153, 104, 0.2);
+      max-width: 900px;
+      margin-left: auto; margin-right: auto;
+      position: relative;
+      z-index: 2;
+    }
+    .reviews-platforms p {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 20px;
+      color: rgba(245, 239, 230, 0.7);
+      margin-bottom: 36px;
+    }
+    .platform-badges {
+      display: flex; gap: 64px; justify-content: center; flex-wrap: wrap;
+    }
+    .platform-badge {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+    .platform-badge .rating {
+      font-family: 'Fraunces', serif; font-size: 44px; font-weight: 400;
+      color: var(--ivory);
+      display: flex; align-items: baseline; gap: 4px;
+      line-height: 1;
+    }
+    .platform-badge .rating-divisor {
+      font-family: 'Fraunces', serif;
+      font-size: 24px;
+      color: var(--brass);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+    }
+    .platform-badge .rating-stars {
+      color: var(--brass-light);
+      font-size: 13px;
+      letter-spacing: 2px;
+      margin-top: 4px;
+    }
+    .platform-badge .platform-tag {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--brass-light);
+    }
+    .platform-badge .platform-name {
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      letter-spacing: 0.26em; text-transform: uppercase;
+      color: rgba(245, 239, 230, 0.6);
+      margin-top: 4px;
+    }
+
+    /* ═══════════ MARQUEE ═══════════ */
+    .marquee-section {
+      background: var(--ivory);
+      padding: 140px 0 100px;
+      overflow: hidden;
+    }
+    .marquee-section .section-header {
+      padding: 0 60px;
+      margin-bottom: 80px;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 24px;
+      animation: scrollMarquee 55s linear infinite;
+      width: fit-content;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    .marquee-item {
+      flex-shrink: 0;
+      width: 380px;
+      height: 480px;
+      overflow: hidden;
+    }
+    .marquee-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .marquee-item:hover img { transform: scale(1.04); }
+    @keyframes scrollMarquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ═══════════ GALLERY ═══════════ */
+    .gallery {
+      background: var(--ivory-soft);
+      padding: 160px 60px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 200px;
+      gap: 14px;
+      max-width: 1500px; margin: 0 auto;
+    }
+    .gallery-item {
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.06); }
+    .g-1 { grid-column: span 6; grid-row: span 2; }
+    .g-2 { grid-column: span 3; grid-row: span 2; }
+    .g-3 { grid-column: span 3; grid-row: span 2; }
+    .g-4 { grid-column: span 4; grid-row: span 2; }
+    .g-5 { grid-column: span 4; grid-row: span 2; }
+    .g-6 { grid-column: span 4; grid-row: span 2; }
+    .g-7 { grid-column: span 3; grid-row: span 2; }
+    .g-8 { grid-column: span 6; grid-row: span 2; }
+    .g-9 { grid-column: span 3; grid-row: span 2; }
+
+    /* ═══════════ OUR STORY ═══════════ */
+    .story {
+      background: var(--ivory);
+      padding: 200px 60px 180px;
+    }
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 110px;
+      max-width: 1380px; margin: 0 auto;
+      align-items: start;
+    }
+    .story-image-stack {
+      position: relative;
+      aspect-ratio: 4/5;
+    }
+    .story-image-main {
+      position: absolute;
+      width: 78%; height: 88%;
+      top: 0; left: 0;
+      background-image: url('https://res.cloudinary.com/dmrelunw0/image/upload/v1778161137/07-fireplace-mantel-detail_hhmiba.jpg');
+      background-size: cover;
+      background-position: center;
+      z-index: 2;
+    }
+    .story-image-accent {
+      position: absolute;
+      width: 48%; height: 48%;
+      bottom: 0; right: -8%;
+      background-image: url('https://res.cloudinary.com/dmrelunw0/image/upload/v1778161137/09-master-bed-dark_drwosh.jpg');
+      background-size: cover;
+      background-position: center;
+      z-index: 3;
+      border: 10px solid var(--ivory);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    }
+    .story-image-frame {
+      position: absolute;
+      width: 78%; height: 88%;
+      top: 18px; left: 18px;
+      border: 1px solid var(--brass);
+      z-index: 1;
+    }
+
+    .story-text { padding-top: 24px; }
+    .story-text .eyebrow { display: block; margin-bottom: 32px; }
+    .story-text h2 {
+      font-family: 'Fraunces', serif; font-weight: 400;
+      font-size: clamp(56px, 6.5vw, 96px);
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+      margin-bottom: 48px;
+      color: var(--charcoal);
+    }
+    .story-text h2 em {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      color: var(--emerald);
+    }
+    .story-text-body { font-size: 18px; line-height: 1.85; color: var(--charcoal-soft); }
+    .story-text-body p { margin-bottom: 28px; }
+    .story-text-body p:first-child::first-letter {
+      font-family: 'Fraunces', serif;
+      font-size: 96px;
+      float: left;
+      line-height: 0.85;
+      margin: 8px 16px 0 0;
+      color: var(--emerald);
+      font-weight: 400;
+    }
+    .story-pullquote {
+      margin: 40px 0 36px;
+      padding: 36px 40px;
+      border-left: 2px solid var(--brass);
+      background: rgba(184, 153, 104, 0.08);
+    }
+    .story-pullquote p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 26px;
+      line-height: 1.4;
+      color: var(--emerald);
+      margin: 0;
+    }
+    .story-signature {
+      display: flex; align-items: center; gap: 24px;
+      margin-top: 44px;
+      padding-top: 36px;
+      border-top: 1px solid var(--line);
+    }
+    .story-signature-line {
+      flex: 0 0 60px; height: 1px;
+      background: var(--brass);
+    }
+    .story-signature-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 19px;
+      color: var(--warm-grey);
+    }
+
+    /* ═══════════ AMENITIES ═══════════ */
+    .amenities {
+      background: var(--emerald-deep);
+      color: var(--ivory);
+      padding: 160px 60px;
+    }
+    .amenities .section-header h2 { color: var(--ivory); }
+    .amenities .section-header h2 em { color: var(--brass-light); }
+    .amenities .section-header p { color: rgba(245, 239, 230, 0.7); }
+    .amenities .eyebrow { color: var(--brass-light); }
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(184, 153, 104, 0.25);
+      max-width: 1380px; margin: 0 auto;
+      border: 1px solid rgba(184, 153, 104, 0.25);
+    }
+    .amenity {
+      background: var(--emerald-deep);
+      padding: 44px 28px;
+      text-align: center;
+      transition: all 0.4s;
+    }
+    .amenity:hover { background: var(--emerald); transform: scale(1.02); }
+    .amenity-icon {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 32px;
+      color: var(--brass-light);
+      margin-bottom: 18px;
+      display: block;
+    }
+    .amenity-label {
+      font-family: 'Lora', serif;
+      font-size: 15px;
+      color: var(--ivory);
+      line-height: 1.4;
+    }
+
+    /* ═══════════ POLICIES ═══════════ */
+    .policies {
+      background: var(--ivory);
+      padding: 140px 60px;
+    }
+    .policies-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+    .policy-block {
+      background: var(--ivory-soft);
+      padding: 48px 44px;
+      border-top: 2px solid var(--brass);
+    }
+    .policy-block .eyebrow { display: block; margin-bottom: 16px; }
+    .policy-block h3 {
+      font-family: 'Fraunces', serif; font-weight: 400;
+      font-size: 38px; line-height: 1.05;
+      letter-spacing: -0.015em;
+      margin-bottom: 28px;
+      color: var(--charcoal);
+    }
+    .policy-list { list-style: none; }
+    .policy-list li {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      display: flex; gap: 18px;
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--charcoal-soft);
+    }
+    .policy-list li:last-child { border-bottom: none; }
+    .policy-list li strong {
+      flex: 0 0 110px;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--emerald);
+      font-weight: 500;
+      padding-top: 2px;
+    }
+    .policy-list li span { flex: 1; }
+    .policy-block-note {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 16px;
+      color: var(--warm-grey);
+    }
+
+    /* ═══════════ ELSEWHERE / OTAs ═══════════ */
+    .elsewhere {
+      background: var(--charcoal);
+      color: var(--ivory);
+      padding: 100px 60px;
+      text-align: center;
+    }
+    .elsewhere .eyebrow { display: block; margin-bottom: 22px; color: var(--brass-light); }
+    .elsewhere h3 {
+      font-family: 'Fraunces', serif; font-weight: 400;
+      font-size: clamp(36px, 4vw, 52px);
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      color: var(--ivory);
+    }
+    .elsewhere h3 em {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      color: var(--brass-light);
+    }
+    .elsewhere > p {
+      max-width: 600px; margin: 0 auto 52px;
+      color: var(--ivory-dim); opacity: 0.75;
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 18px;
+    }
+    .ota-links {
+      display: flex; gap: 0;
+      justify-content: center; flex-wrap: wrap;
+      max-width: 1000px; margin: 0 auto;
+      border: 1px solid rgba(184, 153, 104, 0.25);
+    }
+    .ota {
+      flex: 1; min-width: 180px;
+      padding: 36px 24px;
+      text-decoration: none; color: var(--ivory);
+      font-family: 'Fraunces', serif; font-size: 22px;
+      transition: all 0.4s;
+      border-right: 1px solid rgba(184, 153, 104, 0.2);
+    }
+    .ota:last-child { border-right: none; }
+    .ota:hover { background: rgba(184, 153, 104, 0.1); color: var(--brass-light); }
+    .ota-label {
+      display: block;
+      font-family: 'DM Mono', monospace; font-size: 10px;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--warm-grey); margin-bottom: 8px;
+    }
+
+    /* ═══════════ CONTACT FORM ═══════════ */
+    .contact {
+      background: var(--ivory-soft);
+      padding: 140px 60px;
+    }
+    .contact-inner { max-width: 720px; margin: 0 auto; }
+    .contact-header { text-align: center; margin-bottom: 60px; }
+    .contact-header .eyebrow { display: block; margin-bottom: 28px; }
+    .contact-header h2 {
+      font-family: 'Fraunces', serif; font-weight: 400;
+      font-size: clamp(48px, 5.5vw, 78px);
+      line-height: 0.98;
+      letter-spacing: -0.025em;
+      margin-bottom: 24px;
+      color: var(--charcoal);
+    }
+    .contact-header h2 em {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      color: var(--emerald);
+    }
+    .contact-header p {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 20px;
+      color: var(--warm-grey);
+      line-height: 1.5;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+    .contact-form {
+      background: var(--ivory);
+      padding: 56px 52px 48px;
+      border: 1px solid var(--brass);
+      position: relative;
+    }
+    .contact-form::before {
+      content: '';
+      position: absolute;
+      top: 8px; left: 8px;
+      right: -8px; bottom: -8px;
+      border: 1px solid var(--brass);
+      z-index: -1;
+    }
+    .contact-form .form-row { margin-bottom: 18px; }
+    .contact-form .form-row-double {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .contact-form .form-row-double .form-row { margin-bottom: 0; }
+    .contact-form label {
+      font-family: 'DM Mono', monospace; font-size: 9px;
+      letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--warm-grey); display: block; margin-bottom: 6px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 14px 16px;
+      background: var(--ivory-soft);
+      border: 1px solid var(--line);
+      font-family: 'Lora', serif; font-size: 15px;
+      color: var(--charcoal);
+      outline: none;
+      transition: border 0.25s;
+      resize: vertical;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus { border-color: var(--emerald); }
+    .contact-form textarea { min-height: 120px; }
+    .contact-submit {
+      width: 100%; margin-top: 12px;
+      background: var(--emerald); color: var(--ivory);
+      padding: 18px;
+      border: none;
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      letter-spacing: 0.24em; text-transform: uppercase; font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .contact-submit:hover { background: var(--emerald-deep); }
+    .contact-success {
+      display: none;
+      text-align: center;
+      padding: 32px 20px;
+    }
+    .contact-success.show { display: block; }
+    .contact-success p:first-child {
+      font-family: 'Fraunces', serif;
+      font-size: 28px;
+      color: var(--emerald);
+      margin-bottom: 10px;
+    }
+    .contact-success p:last-child {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--warm-grey);
+    }
+
+    /* ═══════════ INSTAGRAM ═══════════ */
+    .instagram {
+      background: var(--ivory);
+      padding: 160px 60px 100px;
+    }
+    .instagram-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 1100px;
+      margin: 0 auto 56px;
+    }
+    .insta-item {
+      aspect-ratio: 1/1;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .insta-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .insta-item:hover img { transform: scale(1.06); }
+    .insta-item::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(31, 74, 61, 0);
+      transition: background 0.4s;
+    }
+    .insta-item:hover::after { background: rgba(31, 74, 61, 0.2); }
+    .instagram-cta { text-align: center; }
+    .instagram-cta a {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 32px;
+      color: var(--charcoal);
+      text-decoration: none;
+      border-bottom: 1px solid var(--brass);
+      padding-bottom: 8px;
+      transition: color 0.3s;
+    }
+    .instagram-cta a:hover { color: var(--emerald); }
+
+    /* ═══════════ EMAIL CAPTURE ═══════════ */
+    .email-capture {
+      background: var(--ivory-soft);
+      padding: 140px 60px;
+      text-align: center;
+    }
+    .email-inner { max-width: 720px; margin: 0 auto; }
+    .email-inner .eyebrow { display: block; margin-bottom: 28px; }
+    .email-inner h2 {
+      font-family: 'Fraunces', serif; font-weight: 400;
+      font-size: clamp(48px, 6vw, 84px);
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+    .email-inner h2 em {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      color: var(--emerald);
+    }
+    .email-inner p {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 20px;
+      line-height: 1.55; color: var(--warm-grey);
+      margin-bottom: 44px;
+    }
+    .email-form {
+      display: flex; gap: 0;
+      max-width: 520px; margin: 0 auto;
+      border: 1px solid var(--charcoal);
+    }
+    .email-form input {
+      flex: 1; padding: 20px 22px;
+      border: none; background: transparent;
+      font-family: 'Lora', serif; font-size: 16px;
+      color: var(--charcoal); outline: none;
+      min-width: 0;
+    }
+    .email-form button {
+      background: var(--charcoal); color: var(--ivory);
+      padding: 20px 32px;
+      border: none; cursor: pointer;
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      transition: background 0.3s;
+    }
+    .email-form button:hover { background: var(--emerald); }
+
+    /* ═══════════ FOOTER ═══════════ */
+    footer {
+      background: var(--charcoal);
+      color: var(--ivory-dim);
+      padding: 100px 60px 36px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 80px; max-width: 1380px; margin: 0 auto 60px;
+    }
+    .footer-brand h4 {
+      font-family: 'Fraunces', serif; font-weight: 400;
+      font-size: 36px; color: var(--ivory); margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+    .footer-brand p {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 18px; line-height: 1.55; opacity: 0.75;
+      max-width: 360px;
+    }
+    .footer-col h5 {
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--brass-light); margin-bottom: 24px;
+    }
+    .footer-col a {
+      display: block; color: var(--ivory-dim);
+      text-decoration: none;
+      font-size: 15px; margin-bottom: 12px;
+      transition: color 0.3s;
+    }
+    .footer-col a:hover { color: var(--brass-light); }
+
+    .footer-trust {
+      max-width: 1380px; margin: 0 auto;
+      padding: 36px 0;
+      border-top: 1px solid rgba(245, 239, 230, 0.1);
+      border-bottom: 1px solid rgba(245, 239, 230, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 28px;
+    }
+    .footer-trust-block { display: flex; align-items: center; gap: 12px; }
+    .footer-trust-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      color: var(--warm-grey);
+      text-transform: uppercase;
+    }
+    .footer-trust-icons { display: flex; align-items: center; gap: 10px; }
+    .footer-pay {
+      height: 22px;
+      opacity: 0.85;
+      transition: opacity 0.3s;
+    }
+    .footer-pay:hover { opacity: 1; }
+    .footer-ssl { display: flex; align-items: center; gap: 8px; color: var(--brass-light); }
+    .footer-ssl svg { width: 14px; height: 14px; }
+
+    .footer-bottom {
+      max-width: 1380px; margin: 36px auto 0;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 18px;
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      letter-spacing: 0.18em; color: var(--warm-grey);
+    }
+
+    /* ═══════════ RESPONSIVE ═══════════ */
+    @media (max-width: 1024px) {
+      section { padding: 100px 32px; }
+      .nav { padding: 18px 28px; }
+      .nav.scrolled { padding: 12px 28px; }
+      .booking { padding: 80px 32px; }
+      .booking-inner { grid-template-columns: 1fr; gap: 56px; }
+      .booking-info { padding-right: 0; text-align: center; }
+      .perks { max-width: 420px; margin: 28px auto; text-align: left; }
+      .payment-strip { justify-content: center; }
+      .story { padding: 120px 32px; }
+      .story-grid { grid-template-columns: 1fr; gap: 60px; }
+      .transformation-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .reviews-grid { grid-template-columns: 1fr; gap: 28px; max-width: 560px; }
+      .review-card.featured { transform: translateY(40px) scale(1); }
+      .review-card.featured.in-view { transform: translateY(0) scale(1); }
+      .amenities-grid { grid-template-columns: repeat(3, 1fr); }
+      .policies-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+    @media (max-width: 700px) {
+      .nav { padding: 14px 20px; }
+      .nav.scrolled { padding: 10px 20px; }
+      .nav-logo { font-size: 19px; gap: 10px; }
+      .nav-logo-mark { width: 28px; height: 28px; font-size: 13px; }
+      .nav-links a:not(.book-btn) { display: none; }
+      .nav-links { gap: 0; }
+      .book-btn { padding: 9px 18px; font-size: 10px; }
+
+      .hero { min-height: 580px; height: 100vh; }
+      .hero-content { padding: 80px 24px 100px; }
+      .hero h1 { font-size: clamp(40px, 11vw, 70px); }
+      .hero-sub { font-size: 17px; padding: 0 8px; }
+      .hero-eyebrow-bottom { bottom: 36px; font-size: 10px !important; padding: 0 16px; letter-spacing: 0.3em !important; }
+
+      .booking { padding: 56px 20px; }
+      .booking-info h2 { font-size: 34px; }
+      .book-widget { padding: 32px 24px 24px; }
+      .payment-strip { gap: 10px; padding-top: 16px; }
+      .payment-strip .pay-label { width: 100%; text-align: center; margin-bottom: 4px; }
+
+      section { padding: 80px 20px; }
+      .section-header { margin-bottom: 64px; }
+      .section-header h2 { font-size: 44px; }
+      .section-header p { font-size: 17px; }
+
+      .reviews { padding: 100px 20px; }
+      .review-card { padding: 40px 28px 32px; }
+      .review-card.featured { padding: 44px 28px 36px; }
+      .platform-badges { gap: 36px; }
+      .platform-badge .rating { font-size: 36px; }
+
+      .marquee-section { padding: 80px 0 60px; }
+      .marquee-section .section-header { padding: 0 20px; margin-bottom: 48px; }
+      .marquee-item { width: 240px; height: 320px; }
+      .marquee-track { animation-duration: 35s; }
+
+      .transformation-grid { grid-template-columns: 1fr; }
+      .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid { grid-template-columns: repeat(6, 1fr); grid-auto-rows: 130px; }
+      .g-1, .g-2, .g-3, .g-4, .g-5, .g-6, .g-7, .g-8, .g-9 { grid-column: span 6; grid-row: span 2; }
+
+      .story { padding: 80px 20px; }
+      .story-text h2 { font-size: 38px; margin-bottom: 32px; }
+      .story-pullquote { padding: 24px 24px; }
+      .story-pullquote p { font-size: 21px; }
+
+      .policy-block { padding: 32px 24px; }
+      .policy-block h3 { font-size: 28px; margin-bottom: 20px; }
+      .policy-list li { flex-direction: column; gap: 4px; padding: 12px 0; }
+      .policy-list li strong { flex: none; font-size: 9px; }
+
+      .ota-links { flex-direction: column; }
+      .ota { border-right: none; border-bottom: 1px solid rgba(184, 153, 104, 0.2); }
+      .ota:last-child { border-bottom: none; }
+
+      .contact { padding: 80px 20px; }
+      .contact-form { padding: 36px 24px 32px; }
+      .contact-form .form-row-double { grid-template-columns: 1fr; gap: 18px; }
+
+      .instagram-grid { gap: 6px; }
+      .instagram-cta a { font-size: 22px; }
+
+      .email-form { flex-direction: column; }
+      .email-form button { padding: 16px; }
+
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-brand h4 { font-size: 28px; }
+      .footer-trust { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; font-size: 10px; }
+
+      .book-floating { padding: 13px 22px; font-size: 11px; bottom: 18px; right: 18px; }
+
+      .email-popup {
+        width: calc(100vw - 24px);
+        left: 12px; right: 12px;
+        bottom: 78px;
+        padding: 22px 20px;
+      }
+      .email-popup h4 { font-size: 19px; }
+
+      .inquiry-modal { padding: 32px 24px; }
+      .inquiry-modal h3 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════ NAV ═══════════ -->
+  <nav class="nav" id="nav">
+    <a href="#top" class="nav-logo">
+      <span class="nav-logo-mark">N</span>
+      NooknKey
+    </a>
+    <div class="nav-links">
+      <a href="#story">Our Story</a>
+      <a href="#transformation">Transformation</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+      <a href="#book" class="book-btn">Book Now</a>
+    </div>
+  </nav>
+
+  <a href="#book" class="book-floating">Book Now →</a>
+
+  <!-- Email Popup -->
+  <div class="email-popup" id="emailPopup">
+    <button class="email-popup-close" id="emailPopupClose" aria-label="Close">×</button>
+    <span class="eyebrow">A note from your hosts</span>
+    <h4>Insider list for <em>Nashville</em>.</h4>
+    <p>Where to eat, what to skip, the speakeasy locals don't post on Instagram. Plus open dates and direct-booking deals — never spam.</p>
+    <form class="email-popup-form" onsubmit="event.preventDefault(); this.querySelector('input').value=''; alert('Connected to MailerLite during Phase 3 setup.');">
+      <input type="email" placeholder="your@email.com" required />
+      <button type="submit">Get the List</button>
+    </form>
+  </div>
+
+  <!-- INQUIRY MODAL -->
+  <div class="inquiry-overlay" id="inquiryOverlay">
+    <div class="inquiry-modal">
+      <button class="inquiry-close" id="inquiryClose" aria-label="Close">×</button>
+      <span class="eyebrow">Approval Required</span>
+      <h3 class="display">Tell us about <em>your group</em>.</h3>
+      <p id="inquiryReason">Larger groups and additional pets require quick approval. Send the details and we'll respond right away.</p>
+      <form class="inquiry-form" action="https://formspree.io/f/xrejkglo" method="POST" onsubmit="event.preventDefault(); document.getElementById('inquirySuccess').style.display='block'; this.style.display='none';">
+        <input type="hidden" name="_subject" value="NooknKey — Group Inquiry">
+        <input type="hidden" name="form_type" value="inquiry">
+        <div class="form-row">
+          <label>Full Name</label>
+          <input type="text" name="name" required />
+        </div>
+        <div class="form-row">
+          <label>Email</label>
+          <input type="email" name="email" required />
+        </div>
+        <div class="form-row">
+          <label>Phone</label>
+          <input type="tel" name="phone" />
+        </div>
+        <div class="form-row">
+          <label>Tell us about your stay</label>
+          <textarea name="message" placeholder="Group size, dates, number of pets, occasion..." required></textarea>
+        </div>
+        <button type="submit" class="inquiry-submit">Send Inquiry →</button>
+      </form>
+      <div id="inquirySuccess" style="display:none; text-align:center; padding: 24px 0;">
+        <p style="font-family:'Fraunces',serif; font-size:24px; color:var(--emerald); margin-bottom:8px;">Sent.</p>
+        <p style="font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--warm-grey);">We'll be in touch shortly.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO (item #10 reordered subtitle, item #1 zoom) -->
+  <section class="hero" id="top">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="display">The Restored <em>Victorian</em>.</h1>
+      <p class="hero-sub">Original 1890 mantels, crystal chandeliers, and rooms layered in velvet, brass, and time.</p>
+    </div>
+    <span class="eyebrow hero-eyebrow-bottom">Est. 1890 · The Nations · Nashville</span>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="booking" id="book">
+    <div class="booking-inner">
+
+      <div class="booking-info">
+        <span class="eyebrow">Book Direct · Skip the Fees</span>
+        <h2 class="display">Skip the fees.<br/><em>Get the keys faster</em>.</h2>
+        <p>Book through our website and you save what Airbnb takes from your wallet — plus a few extras the platforms don't offer.</p>
+
+        <ul class="perks">
+          <li><span class="perks-icon">i</span><div><strong>No service fees.</strong>Save up to 14.2% versus booking through Airbnb.</div></li>
+          <li><span class="perks-icon">ii</span><div><strong>Complimentary early check-in</strong>when available — request at booking.</div></li>
+          <li><span class="perks-icon">iii</span><div><strong>Direct line to the host.</strong>Same response time. Same care. No middleman.</div></li>
+          <li><span class="perks-icon">iv</span><div><strong>Best-rate guarantee.</strong>See it cheaper anywhere? We'll match it.</div></li>
+          <li><span class="roman-stat">v</span><div><strong>4 Bedrooms · 2 Baths · 10 Beds · Sleeps 12+</strong>Built for groups, weddings, and family reunions.</div></li>
+        </ul>
+
+        <div class="payment-strip">
+          <span class="pay-label">We Accept</span>
+          <svg class="pay-logo" viewBox="0 0 60 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Visa">
+            <rect width="60" height="22" rx="3" fill="#1A1F71"/>
+            <text x="30" y="15" font-family="Arial, sans-serif" font-size="11" font-weight="900" fill="#FFFFFF" text-anchor="middle">VISA</text>
+          </svg>
+          <svg class="pay-logo" viewBox="0 0 60 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Mastercard">
+            <rect width="60" height="22" rx="3" fill="#FFFFFF" stroke="#E0E0E0" stroke-width="0.5"/>
+            <circle cx="25" cy="11" r="6" fill="#EB001B"/>
+            <circle cx="35" cy="11" r="6" fill="#F79E1B"/>
+            <path d="M30 6.5 A6 6 0 0 1 30 15.5 A6 6 0 0 1 30 6.5" fill="#FF5F00"/>
+          </svg>
+          <svg class="pay-logo" viewBox="0 0 60 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="American Express">
+            <rect width="60" height="22" rx="3" fill="#2E77BC"/>
+            <text x="30" y="14.5" font-family="Arial, sans-serif" font-size="8" font-weight="900" fill="#FFFFFF" text-anchor="middle">AMEX</text>
+          </svg>
+          <svg class="pay-logo" viewBox="0 0 60 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Apple Pay">
+            <rect width="60" height="22" rx="3" fill="#000000"/>
+            <path d="M14.6 8.2c-.4.5-1.1.9-1.7.9-.1-.7.2-1.4.6-1.8.4-.5 1.1-.9 1.7-.9.1.7-.2 1.4-.6 1.8zm.6 1c-.9-.1-1.7.5-2.2.5-.5 0-1.2-.5-1.9-.5-1 0-1.9.6-2.4 1.5-1 1.8-.3 4.4.7 5.9.5.7 1.1 1.5 1.8 1.5.7 0 1-.5 1.9-.5.9 0 1.1.5 1.9.5.8 0 1.3-.7 1.7-1.4.5-.8.7-1.6.7-1.6-.1 0-1.4-.5-1.4-2 0-1.2 1-1.8 1-1.9-.5-.8-1.4-.9-1.7-.9z" fill="#FFFFFF"/>
+            <text x="36" y="14" font-family="Arial, sans-serif" font-size="8" font-weight="500" fill="#FFFFFF">Pay</text>
+          </svg>
+          <svg class="pay-logo" viewBox="0 0 60 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Google Pay">
+            <rect width="60" height="22" rx="3" fill="#FFFFFF" stroke="#E0E0E0" stroke-width="0.5"/>
+            <text x="14" y="14.5" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#5F6368">G</text>
+            <text x="22" y="14.5" font-family="Arial, sans-serif" font-size="8" font-weight="500" fill="#5F6368">Pay</text>
+          </svg>
+          <svg class="pay-logo" viewBox="0 0 60 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Klarna">
+            <rect width="60" height="22" rx="3" fill="#FFA8CD"/>
+            <text x="30" y="14.5" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#000000" text-anchor="middle">Klarna</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="book-widget" id="hospitable-widget-container">
+        <span class="eyebrow">Check Availability</span>
+        <h3 class="display">Pick your dates</h3>
+
+        <div class="form-row form-row-double">
+          <div>
+            <label>Check In</label>
+            <input type="date" id="checkIn" />
+          </div>
+          <div>
+            <label>Check Out</label>
+            <input type="date" id="checkOut" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>Guests</label>
+          <div class="counter">
+            <button type="button" class="counter-btn" id="guestMinus" aria-label="Decrease guests">−</button>
+            <span class="counter-display" id="guestDisplay">1 Guest</span>
+            <button type="button" class="counter-btn" id="guestPlus" aria-label="Increase guests">+</button>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>Pets (Dogs)</label>
+          <div class="counter">
+            <button type="button" class="counter-btn" id="petMinus" aria-label="Decrease pets">−</button>
+            <span class="counter-display" id="petDisplay">No pets</span>
+            <button type="button" class="counter-btn" id="petPlus" aria-label="Increase pets">+</button>
+          </div>
+          <p class="pet-fee-note">Pet fee applies — total shown at checkout</p>
+        </div>
+
+        <button class="check-availability" id="checkAvailability">Check Availability →</button>
+
+        <p class="widget-note">Real-time pricing · Instant confirmation</p>
+
+        <div class="widget-trust">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+          Secure checkout via Stripe
+        </div>
+
+        <div class="widget-contact">
+          <a href="#contact">Have questions? Contact us →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TRANSFORMATION (item #11 — Pastel Room rename) -->
+  <section class="transformation" id="transformation">
+    <div class="section-header">
+      <span class="eyebrow">The Transformation</span>
+      <h2 class="display">From forgotten<br/><em>to photographed</em>.</h2>
+      <p>Restored, not replaced. Each room rebuilt around the bones the 1890s left behind.</p>
+    </div>
+
+    <div class="transformation-grid">
+      <div class="trans-card">
+        <img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161136/03-foyer-chandelier_prszk1.jpg" alt="Foyer with crystal chandelier" />
+        <div class="trans-card-overlay">
+          <div class="label">The Foyer</div>
+          <div class="name">Crystal & Gold Leaf</div>
+        </div>
+      </div>
+      <div class="trans-card">
+        <img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161138/17-emerald-living-wide_dianwp.jpg" alt="Emerald velvet living room" />
+        <div class="trans-card-overlay">
+          <div class="label">The Living Room</div>
+          <div class="name">Emerald & Gold</div>
+        </div>
+      </div>
+      <div class="trans-card">
+        <img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161136/05-living-fireplace-wide_r8im1x.jpg" alt="Parlor with original mantel and brown leather chairs" />
+        <div class="trans-card-overlay">
+          <div class="label">The Parlor</div>
+          <div class="name">Mantel, Restored</div>
+        </div>
+      </div>
+      <div class="trans-card">
+        <img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161136/02-bedroom-dark-floral-wide_nvcojk.jpg" alt="Dark floral entry bedroom" />
+        <div class="trans-card-overlay">
+          <div class="label">The Entry</div>
+          <div class="name">Dutch Floral, in the Dark</div>
+        </div>
+      </div>
+      <!-- The Pastel Room — panned right per item #6 -->
+      <div class="trans-card pastel-room">
+        <img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161138/15-pink-bedroom-detail_rtxmqz.jpg" alt="The Pastel Room with pink toile and gold-framed Impressionist art" />
+        <div class="trans-card-overlay">
+          <div class="label">The Pastel Room</div>
+          <div class="name">Pink Toile & Sunlight</div>
+        </div>
+      </div>
+      <div class="trans-card">
+        <img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161138/19-attic-loft-wide_cyesoa.jpg" alt="Forest green attic loft" />
+        <div class="trans-card-overlay">
+          <div class="label">The Loft</div>
+          <div class="name">Forest Green & Pine</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="transformation-note">
+      <p>"A century and a half of charm. The 1890s, restored."</p>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <div class="section-header">
+      <span class="eyebrow">From the Guestbook</span>
+      <h2 class="display">What guests<br/><em>actually say</em>.</h2>
+      <p>A 4.98 average across eighty-plus stays. Three favorites, in their own words.</p>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review-card">
+        <span class="review-quote">"</span>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Beautifully decorated, comfortable, and clearly cared for — you can feel the love poured into every room. The neighborhood is picture-perfect, and our dog made friends on every walk. Couldn't recommend Giorgio and this home enough.</p>
+        <div class="review-author">Berly · Kentucky · Stayed with a pet</div>
+      </div>
+
+      <div class="review-card featured">
+        <span class="featured-tag">Featured</span>
+        <span class="review-quote">"</span>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Nine of us girls on a bachelorette weekend, scammed by another host last-minute. Giorgio took us in within hours — even pulled over on the side of the road on his vacation to make sure we got in safely. Spotless, gorgeous, plenty of room. 10/5 stars.</p>
+        <div class="review-author">Sophia · Henderson, KY · Group trip</div>
+      </div>
+
+      <div class="review-card">
+        <span class="review-quote">"</span>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">We're a family of six and the house worked beautifully. The kids loved the second floor. Decor is genuinely impressive — bachelorettes or friend groups would have a field day with all the post-worthy backdrops. Easy parking, safe walkable neighborhood. Highly recommend.</p>
+        <div class="review-author">Amanda · Knoxville, TN · Stayed with kids</div>
+      </div>
+    </div>
+
+    <div class="reviews-platforms">
+      <p>Verified across every platform we list on.</p>
+      <div class="platform-badges">
+        <div class="platform-badge">
+          <span class="rating">4.98<span class="rating-divisor">/5</span></span>
+          <span class="rating-stars">★★★★★</span>
+          <span class="platform-name">Airbnb</span>
+        </div>
+        <div class="platform-badge">
+          <span class="rating">10<span class="rating-divisor">/10</span></span>
+          <span class="platform-tag">Exceptional</span>
+          <span class="platform-name">VRBO</span>
+        </div>
+        <div class="platform-badge">
+          <span class="rating">10<span class="rating-divisor">/10</span></span>
+          <span class="platform-tag">Exceptional</span>
+          <span class="platform-name">Booking.com</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <section class="marquee-section">
+    <div class="section-header">
+      <span class="eyebrow">A Walk Through the House</span>
+      <h2 class="display">Every room<br/><em>its own little world</em>.</h2>
+      <p>Each frame, an actual room you'll sleep, sit, or sip coffee in.</p>
+    </div>
+    <div class="marquee-track">
+      <div class="marquee-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161136/03-foyer-chandelier_prszk1.jpg" alt="" /></div>
+      <div class="marquee-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161138/17-emerald-living-wide_dianwp.jpg" alt="" /></div>
+      <div class="marquee-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161136/05-living-fireplace-wide_r8im1x.jpg" alt="" /></div>
+      <div class="marquee-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161138/16-bathroom-stripes-gold_alqcub.jpg" alt="" /></div>
+      <div class="marquee-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161138/15-pink-bedroom-detail_rtxmqz.jpg" alt="" /></div>
+      <div class="marquee-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161138/19-attic-loft-wide_cyesoa.jpg" alt="" /></div>
+      <div class="marquee-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161136/02-bedroom-dark-floral-wide_nvcojk.jpg" alt="" /></div>
+      <div class="marquee-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161137/12-vanity-desk-floral_qm6jbg.jpg" alt="" /></div>
+      <div class="marquee-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161136/03-foyer-chandelier_prszk1.jpg" alt="" /></div>
+      <div class="marquee-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161138/17-emerald-living-wide_dianwp.jpg" alt="" /></div>
+      <div class="marquee-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161136/05-living-fireplace-wide_r8im1x.jpg" alt="" /></div>
+      <div class="marquee-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161138/16-bathroom-stripes-gold_alqcub.jpg" alt="" /></div>
+      <div class="marquee-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161138/15-pink-bedroom-detail_rtxmqz.jpg" alt="" /></div>
+      <div class="marquee-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161138/19-attic-loft-wide_cyesoa.jpg" alt="" /></div>
+      <div class="marquee-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161136/02-bedroom-dark-floral-wide_nvcojk.jpg" alt="" /></div>
+      <div class="marquee-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161137/12-vanity-desk-floral_qm6jbg.jpg" alt="" /></div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+    <div class="section-header">
+      <span class="eyebrow">The Gallery</span>
+      <h2 class="display">Every corner,<br/><em>by design</em>.</h2>
+      <p>One house. A thousand details.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item g-1"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161138/16-bathroom-stripes-gold_alqcub.jpg" alt="" /></div>
+      <div class="gallery-item g-2"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161137/09-master-bed-dark_drwosh.jpg" alt="" /></div>
+      <div class="gallery-item g-3"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161137/14-pink-bedroom-wide_kib5om.jpg" alt="" /></div>
+      <div class="gallery-item g-4"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161138/20-attic-bedroom-detail_odvmxr.jpg" alt="" /></div>
+      <div class="gallery-item g-5"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161137/07-fireplace-mantel-detail_hhmiba.jpg" alt="" /></div>
+      <div class="gallery-item g-6"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161137/12-vanity-desk-floral_qm6jbg.jpg" alt="" /></div>
+      <div class="gallery-item g-7"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161137/11-coffee-bar_xede28.jpg" alt="" /></div>
+      <div class="gallery-item g-8"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161138/18-emerald-chair-detail_hxmzqp.jpg" alt="" /></div>
+      <div class="gallery-item g-9"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161138/15-pink-bedroom-detail_rtxmqz.jpg" alt="" /></div>
+    </div>
+  </section>
+
+  <!-- OUR STORY (items #2, #3, #4, #12, #13, #14, #15) -->
+  <section class="story" id="story">
+    <div class="story-grid">
+      <div class="story-image-stack">
+        <div class="story-image-frame"></div>
+        <div class="story-image-main"></div>
+        <div class="story-image-accent"></div>
+      </div>
+
+      <div class="story-text">
+        <span class="eyebrow">Our Story</span>
+        <h2 class="display">
+          The prettiest house on the block, <em>reimagined</em>.
+        </h2>
+        <div class="story-text-body">
+          <p>When we found this house, it was the most forgotten Victorian in the neighborhood. A century-old beauty on a corner lot, in the part of Nashville locals call The Nations. Original 1890 mantels, gorgeous crystal chandeliers, and show-stopping twelve-foot pocket doors with brass thumb-pulls.</p>
+
+          <div class="story-pullquote">
+            <p>"We didn't want to flip this house. We wanted to keep its soul."</p>
+          </div>
+
+          <p>The decision was easy: not to rebuild the house, but to restore all the charm and beauty of the past. The fireplace tile stayed. The pine floors stayed. We added crystal chandeliers, emerald velvet chesterfields, a brass leopard pedestal because we couldn't help ourselves, and the kind of bedding you sleep eleven hours in.</p>
+
+          <p>During the renovation, neighbors stopped by daily to watch the progress. Now they stop to take pictures.</p>
+        </div>
+
+        <div class="story-signature">
+          <span class="story-signature-line"></span>
+          <span class="story-signature-text">— NooknKey</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AMENITIES (item #7 - Smart TV singular) -->
+  <section class="amenities">
+    <div class="section-header">
+      <span class="eyebrow">Amenities</span>
+      <h2 class="display">Everything you'd<br/><em>expect</em>.</h2>
+      <p>Built for groups, weddings, family reunions, and the kind of weekends you'll talk about for years.</p>
+    </div>
+
+    <div class="amenities-grid">
+      <div class="amenity"><span class="amenity-icon">i</span><div class="amenity-label">Sleeps 12+<br/>10 beds</div></div>
+      <div class="amenity"><span class="amenity-icon">ii</span><div class="amenity-label">Fully fenced<br/>backyard</div></div>
+      <div class="amenity"><span class="amenity-icon">iii</span><div class="amenity-label">Full kitchen<br/>+ Keurig bar</div></div>
+      <div class="amenity"><span class="amenity-icon">iv</span><div class="amenity-label">Fast Wi-Fi<br/>+ Smart TV</div></div>
+      <div class="amenity"><span class="amenity-icon">v</span><div class="amenity-label">Self check-in<br/>smart lock</div></div>
+      <div class="amenity"><span class="amenity-icon">vi</span><div class="amenity-label">Washer<br/>+ Dryer</div></div>
+      <div class="amenity"><span class="amenity-icon">vii</span><div class="amenity-label">Free<br/>parking</div></div>
+      <div class="amenity"><span class="amenity-icon">viii</span><div class="amenity-label">Beautiful<br/>stone porches</div></div>
+      <div class="amenity"><span class="amenity-icon">ix</span><div class="amenity-label">Original 1890<br/>fireplaces</div></div>
+      <div class="amenity"><span class="amenity-icon">x</span><div class="amenity-label">Hair dryers<br/>+ luxury linens</div></div>
+      <div class="amenity"><span class="amenity-icon">xi</span><div class="amenity-label">The Nations<br/>dining · exercise · nightlife</div></div>
+      <div class="amenity"><span class="amenity-icon">xii</span><div class="amenity-label">Coffee &<br/>welcome basket</div></div>
+    </div>
+  </section>
+
+  <!-- POLICIES (item #8 - moderate cancellation) -->
+  <section class="policies">
+    <div class="section-header">
+      <span class="eyebrow">The Fine Print</span>
+      <h2 class="display">Stay <em>details</em>.</h2>
+    </div>
+
+    <div class="policies-grid">
+      <div class="policy-block">
+        <span class="eyebrow">House Rules</span>
+        <h3 class="display">A few simple things.</h3>
+        <ul class="policy-list">
+          <li><strong>Check-In</strong><span>4:00 PM · self check-in via smart lock</span></li>
+          <li><strong>Check-Out</strong><span>10:00 AM</span></li>
+          <li><strong>Quiet Hours</strong><span>10:00 PM – 8:00 AM</span></li>
+          <li><strong>Guests</strong><span>Maximum 12 overnight guests · no parties or events</span></li>
+          <li><strong>Pets</strong><span>Welcome with prior approval for a fee</span></li>
+          <li><strong>Smoking</strong><span>No smoking inside</span></li>
+          <li><strong>Children</strong><span>Welcome at any age</span></li>
+        </ul>
+        <p class="policy-block-note">We'll send a complete digital welcome book with WiFi password, parking, trash day, and our favorite coffee shops 24 hours before check-in.</p>
+      </div>
+
+      <div class="policy-block">
+        <span class="eyebrow">Cancellation Policy</span>
+        <h3 class="display">Plans change. We get it.</h3>
+        <ul class="policy-list">
+          <li><strong>30+ Days Out</strong><span>Full refund</span></li>
+          <li><strong>14–30 Days</strong><span>50% refund</span></li>
+          <li><strong>7–14 Days</strong><span>25% refund</span></li>
+          <li><strong>Under 7 Days</strong><span>No refund</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ELSEWHERE / OTAs -->
+  <section class="elsewhere">
+    <span class="eyebrow">Also Listed On</span>
+    <h3 class="display">Prefer the platforms? <em>We're there too.</em></h3>
+    <p>Same house, same care. Direct booking is a little cheaper.</p>
+
+    <div class="ota-links">
+      <a href="https://www.airbnb.com/rooms/1155186493699877057" class="ota" target="_blank" rel="noopener">
+        <span class="ota-label">View on</span>
+        Airbnb
+      </a>
+      <a href="https://www.vrbo.com/4173550" class="ota" target="_blank" rel="noopener">
+        <span class="ota-label">View on</span>
+        VRBO
+      </a>
+      <a href="https://www.booking.com/hotel/us/1890s-victorian-restored-home-8-mins-to-downtown.html" class="ota" target="_blank" rel="noopener">
+        <span class="ota-label">View on</span>
+        Booking.com
+      </a>
+      <a href="https://instagram.com/nooknkey" class="ota" target="_blank" rel="noopener">
+        <span class="ota-label">Follow</span>
+        @nooknkey
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM (item #9 - "right away") -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="contact-header">
+        <span class="eyebrow">Have Questions?</span>
+        <h2 class="display">To speak with <em>someone</em>.</h2>
+        <p>Have a question before you book, planning a special occasion, or coordinating a larger group? Send a message — we usually respond right away.</p>
+      </div>
+
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/xrejkglo" method="POST">
+        <input type="hidden" name="_subject" value="NooknKey — New Contact Form Submission">
+        <input type="hidden" name="form_type" value="contact">
+
+        <div id="contactFields">
+          <div class="form-row">
+            <label>Full Name</label>
+            <input type="text" name="name" required />
+          </div>
+          <div class="form-row-double">
+            <div class="form-row">
+              <label>Email</label>
+              <input type="email" name="email" required />
+            </div>
+            <div class="form-row">
+              <label>Phone</label>
+              <input type="tel" name="phone" />
+            </div>
+          </div>
+          <div class="form-row">
+            <label>Your Message</label>
+            <textarea name="message" placeholder="Ask anything — group bookings, occasions, accessibility, pet details..." required></textarea>
+          </div>
+          <button type="submit" class="contact-submit">Send Message →</button>
+        </div>
+
+        <div class="contact-success" id="contactSuccess">
+          <p>Message sent.</p>
+          <p>We'll be in touch shortly.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM -->
+  <section class="instagram">
+    <div class="section-header">
+      <span class="eyebrow">Follow</span>
+      <h2 class="display">Live from <em>@nooknkey</em>.</h2>
+      <p>The rooms. The renovation. The before-and-afters you didn't see here.</p>
+    </div>
+
+    <div class="instagram-grid">
+      <a href="https://instagram.com/nooknkey" target="_blank" rel="noopener" class="insta-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161136/03-foyer-chandelier_prszk1.jpg" alt="" /></a>
+      <a href="https://instagram.com/nooknkey" target="_blank" rel="noopener" class="insta-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161138/17-emerald-living-wide_dianwp.jpg" alt="" /></a>
+      <a href="https://instagram.com/nooknkey" target="_blank" rel="noopener" class="insta-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161138/16-bathroom-stripes-gold_alqcub.jpg" alt="" /></a>
+      <a href="https://instagram.com/nooknkey" target="_blank" rel="noopener" class="insta-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161138/15-pink-bedroom-detail_rtxmqz.jpg" alt="" /></a>
+      <a href="https://instagram.com/nooknkey" target="_blank" rel="noopener" class="insta-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161076/01-exterior-front-new_ivvlht.jpg" alt="" /></a>
+      <a href="https://instagram.com/nooknkey" target="_blank" rel="noopener" class="insta-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161138/19-attic-loft-wide_cyesoa.jpg" alt="" /></a>
+      <a href="https://instagram.com/nooknkey" target="_blank" rel="noopener" class="insta-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161137/09-master-bed-dark_drwosh.jpg" alt="" /></a>
+      <a href="https://instagram.com/nooknkey" target="_blank" rel="noopener" class="insta-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161137/12-vanity-desk-floral_qm6jbg.jpg" alt="" /></a>
+      <a href="https://instagram.com/nooknkey" target="_blank" rel="noopener" class="insta-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161137/07-fireplace-mantel-detail_hhmiba.jpg" alt="" /></a>
+    </div>
+
+    <div class="instagram-cta">
+      <a href="https://instagram.com/nooknkey" target="_blank" rel="noopener">@nooknkey on Instagram →</a>
+    </div>
+  </section>
+
+  <!-- EMAIL CAPTURE (item #5 - seasonal deals) -->
+  <section class="email-capture">
+    <div class="email-inner">
+      <span class="eyebrow">The List</span>
+      <h2 class="display">Future stays,<br/><em>future properties</em>.</h2>
+      <p>Open dates, seasonal deals, the host's insider Nashville list — restaurants, hidden bars, weekend events — and first dibs on the next NooknKey property.</p>
+
+      <form class="email-form" onsubmit="event.preventDefault(); alert('Email capture connects to MailerLite during Phase 3 setup.');">
+        <input type="email" placeholder="your@email.com" required />
+        <button type="submit">Join</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER (items #16, #20 — real Facebook URL, address kept) -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h4>NooknKey</h4>
+        <p>A restored 1890 Victorian on the corner of Michigan Avenue, in The Nations, Nashville.</p>
+      </div>
+      <div class="footer-col">
+        <h5>The House</h5>
+        <a href="#story">Our Story</a>
+        <a href="#transformation">Transformation</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reviews">Reviews</a>
+      </div>
+      <div class="footer-col">
+        <h5>Stay Details</h5>
+        <a href="#book">Book Direct</a>
+        <a href="https://www.airbnb.com/rooms/1155186493699877057" target="_blank" rel="noopener">Airbnb</a>
+        <a href="https://www.vrbo.com/4173550" target="_blank" rel="noopener">VRBO</a>
+        <a href="https://www.booking.com/hotel/us/1890s-victorian-restored-home-8-mins-to-downtown.html" target="_blank" rel="noopener">Booking.com</a>
+      </div>
+      <div class="footer-col">
+        <h5>Get in Touch</h5>
+        <a href="#contact">Contact Form</a>
+        <a href="https://instagram.com/nooknkey" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/profile.php?id=61581390295068" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+
+    <div class="footer-trust">
+      <div class="footer-trust-block">
+        <span class="footer-trust-label">Secure Payments</span>
+        <div class="footer-trust-icons">
+          <svg class="footer-pay" viewBox="0 0 60 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Visa">
+            <rect width="60" height="22" rx="3" fill="#1A1F71"/>
+            <text x="30" y="15" font-family="Arial, sans-serif" font-size="11" font-weight="900" fill="#FFFFFF" text-anchor="middle">VISA</text>
+          </svg>
+          <svg class="footer-pay" viewBox="0 0 60 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Mastercard">
+            <rect width="60" height="22" rx="3" fill="#FFFFFF"/>
+            <circle cx="25" cy="11" r="6" fill="#EB001B"/>
+            <circle cx="35" cy="11" r="6" fill="#F79E1B"/>
+            <path d="M30 6.5 A6 6 0 0 1 30 15.5 A6 6 0 0 1 30 6.5" fill="#FF5F00"/>
+          </svg>
+          <svg class="footer-pay" viewBox="0 0 60 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="American Express">
+            <rect width="60" height="22" rx="3" fill="#2E77BC"/>
+            <text x="30" y="14.5" font-family="Arial, sans-serif" font-size="8" font-weight="900" fill="#FFFFFF" text-anchor="middle">AMEX</text>
+          </svg>
+          <svg class="footer-pay" viewBox="0 0 60 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Apple Pay">
+            <rect width="60" height="22" rx="3" fill="#000000"/>
+            <path d="M14.6 8.2c-.4.5-1.1.9-1.7.9-.1-.7.2-1.4.6-1.8.4-.5 1.1-.9 1.7-.9.1.7-.2 1.4-.6 1.8zm.6 1c-.9-.1-1.7.5-2.2.5-.5 0-1.2-.5-1.9-.5-1 0-1.9.6-2.4 1.5-1 1.8-.3 4.4.7 5.9.5.7 1.1 1.5 1.8 1.5.7 0 1-.5 1.9-.5.9 0 1.1.5 1.9.5.8 0 1.3-.7 1.7-1.4.5-.8.7-1.6.7-1.6-.1 0-1.4-.5-1.4-2 0-1.2 1-1.8 1-1.9-.5-.8-1.4-.9-1.7-.9z" fill="#FFFFFF"/>
+            <text x="36" y="14" font-family="Arial, sans-serif" font-size="8" font-weight="500" fill="#FFFFFF">Pay</text>
+          </svg>
+          <svg class="footer-pay" viewBox="0 0 60 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Google Pay">
+            <rect width="60" height="22" rx="3" fill="#FFFFFF"/>
+            <text x="14" y="14.5" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#5F6368">G</text>
+            <text x="22" y="14.5" font-family="Arial, sans-serif" font-size="8" font-weight="500" fill="#5F6368">Pay</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="footer-trust-block footer-ssl">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+        <span class="footer-trust-label" style="color: var(--brass-light);">SSL Secured · Powered by Stripe</span>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 NooknKey · 4810 Michigan Ave, Nashville, TN 37209</span>
+      <span>Designed in Nashville</span>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    });
+
+    const bookSection = document.getElementById('book');
+    const floatingBtn = document.querySelector('.book-floating');
+    const bookObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        floatingBtn.style.opacity = entry.isIntersecting ? '0' : '1';
+        floatingBtn.style.pointerEvents = entry.isIntersecting ? 'none' : 'auto';
+      });
+    }, { threshold: 0.3 });
+    bookObserver.observe(bookSection);
+
+    const emailPopup = document.getElementById('emailPopup');
+    const emailPopupClose = document.getElementById('emailPopupClose');
+    let popupShown = false;
+    function showPopup() {
+      if (!popupShown && !sessionStorage.getItem('nookPopupDismissed')) {
+        emailPopup.classList.add('show');
+        popupShown = true;
+      }
+    }
+    setTimeout(showPopup, 25000);
+    emailPopupClose.addEventListener('click', () => {
+      emailPopup.classList.remove('show');
+      try { sessionStorage.setItem('nookPopupDismissed', '1'); } catch(e) {}
+    });
+
+    const reviewCards = document.querySelectorAll('.review-card');
+    const reviewObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('in-view');
+      });
+    }, { threshold: 0.2 });
+    reviewCards.forEach(card => reviewObserver.observe(card));
+
+    const GUEST_MAX_NORMAL = 12;
+    const PET_MAX_NORMAL = 3;
+    let guestCount = 1;
+    let petCount = 0;
+    let guestOverflow = false;
+    let petOverflow = false;
+
+    const guestDisplay = document.getElementById('guestDisplay');
+    const guestPlus = document.getElementById('guestPlus');
+    const guestMinus = document.getElementById('guestMinus');
+    const petDisplay = document.getElementById('petDisplay');
+    const petPlus = document.getElementById('petPlus');
+    const petMinus = document.getElementById('petMinus');
+    const checkBtn = document.getElementById('checkAvailability');
+
+    function updateGuestDisplay() {
+      if (guestOverflow) {
+        guestDisplay.textContent = '12+ — inquiry required';
+        guestDisplay.classList.add('overflow');
+      } else {
+        guestDisplay.textContent = guestCount === 1 ? '1 Guest' : guestCount + ' Guests';
+        guestDisplay.classList.remove('overflow');
+      }
+      guestMinus.disabled = (!guestOverflow && guestCount <= 1);
+      updateCheckButton();
+    }
+
+    function updatePetDisplay() {
+      if (petOverflow) {
+        petDisplay.textContent = '3+ — inquiry required';
+        petDisplay.classList.add('overflow');
+      } else if (petCount === 0) {
+        petDisplay.textContent = 'No pets';
+        petDisplay.classList.remove('overflow');
+      } else {
+        petDisplay.textContent = petCount === 1 ? '1 Dog' : petCount + ' Dogs';
+        petDisplay.classList.remove('overflow');
+      }
+      petMinus.disabled = (!petOverflow && petCount <= 0);
+      updateCheckButton();
+    }
+
+    function updateCheckButton() {
+      if (guestOverflow || petOverflow) {
+        checkBtn.textContent = 'Send Inquiry →';
+        checkBtn.classList.add('inquiry-mode');
+      } else {
+        checkBtn.textContent = 'Check Availability →';
+        checkBtn.classList.remove('inquiry-mode');
+      }
+    }
+
+    guestPlus.addEventListener('click', () => {
+      if (guestOverflow) return;
+      if (guestCount < GUEST_MAX_NORMAL) guestCount++;
+      else guestOverflow = true;
+      updateGuestDisplay();
+    });
+    guestMinus.addEventListener('click', () => {
+      if (guestOverflow) {
+        guestOverflow = false;
+        guestCount = GUEST_MAX_NORMAL;
+      } else if (guestCount > 1) guestCount--;
+      updateGuestDisplay();
+    });
+    petPlus.addEventListener('click', () => {
+      if (petOverflow) return;
+      if (petCount < PET_MAX_NORMAL) petCount++;
+      else petOverflow = true;
+      updatePetDisplay();
+    });
+    petMinus.addEventListener('click', () => {
+      if (petOverflow) {
+        petOverflow = false;
+        petCount = PET_MAX_NORMAL;
+      } else if (petCount > 0) petCount--;
+      updatePetDisplay();
+    });
+
+    updateGuestDisplay();
+    updatePetDisplay();
+
+    const inquiryOverlay = document.getElementById('inquiryOverlay');
+    const inquiryClose = document.getElementById('inquiryClose');
+    const inquiryReason = document.getElementById('inquiryReason');
+
+    checkBtn.addEventListener('click', () => {
+      if (guestOverflow || petOverflow) {
+        let reasons = [];
+        if (guestOverflow) reasons.push('groups over 12');
+        if (petOverflow) reasons.push('more than 3 dogs');
+        inquiryReason.textContent = `For ${reasons.join(' and ')}, we just need to confirm a few details first. Send the request and we'll respond right away.`;
+        inquiryOverlay.classList.add('show');
+      } else {
+        const checkIn = document.getElementById('checkIn').value;
+        const checkOut = document.getElementById('checkOut').value;
+        if (!checkIn || !checkOut) {
+          alert('Please select check-in and check-out dates.');
+          return;
+        }
+        alert('In Phase 3, this connects to the live Hospitable booking widget for instant confirmation.');
+      }
+    });
+
+    inquiryClose.addEventListener('click', () => {
+      inquiryOverlay.classList.remove('show');
+    });
+    inquiryOverlay.addEventListener('click', (e) => {
+      if (e.target === inquiryOverlay) inquiryOverlay.classList.remove('show');
+    });
+
+    const contactForm = document.getElementById('contactForm');
+    const contactFields = document.getElementById('contactFields');
+    const contactSuccess = document.getElementById('contactSuccess');
+
+    contactForm.addEventListener('submit', async (e) => {
+      if (contactForm.action.includes('xrejkglo')) {
+        e.preventDefault();
+        contactFields.style.display = 'none';
+        contactSuccess.classList.add('show');
+        return;
+      }
+      e.preventDefault();
+      try {
+        const formData = new FormData(contactForm);
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          contactFields.style.display = 'none';
+          contactSuccess.classList.add('show');
+          contactForm.reset();
+        } else {
+          alert('Something went wrong. Please try again.');
+        }
+      } catch (err) {
+        alert('Something went wrong. Please try again.');
+      }
+    });
+  </script>
+
+</body>
+</html>
