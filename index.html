@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="description" content="NooknKey — A restored 1890 Victorian in The Nations, Nashville. Sleeps 12. Book direct, skip the fees." />
   <title>NooknKey — A Restored 1890 Victorian · Nashville</title>
-
+ 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
+ 
   <style>
     :root {
       --ivory: #F5EFE6;
@@ -28,7 +28,7 @@
       --warm-grey: #6B6359;
       --line: rgba(26, 22, 17, 0.12);
     }
-
+ 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
@@ -40,7 +40,7 @@
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
-
+ 
     .display { font-family: 'Fraunces', serif; font-weight: 400; line-height: 1.02; letter-spacing: -0.02em; }
     .eyebrow {
       font-family: 'DM Mono', monospace;
@@ -50,7 +50,7 @@
       color: var(--brass);
       font-weight: 500;
     }
-
+ 
     /* ═══════════ NAV ═══════════ */
     .nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -94,7 +94,7 @@
       width: 0; background: currentColor; transition: width 0.4s;
     }
     .nav-links a:hover::after { width: 100%; }
-
+ 
     .book-btn {
       background: var(--burgundy);
       color: #FFFFFF !important;
@@ -114,7 +114,7 @@
     }
     .book-btn::after { display: none !important; }
     .nav.scrolled .book-btn { color: #FFFFFF !important; }
-
+ 
     .book-floating {
       position: fixed; bottom: 28px; right: 28px; z-index: 99;
       background: var(--burgundy); color: #FFFFFF;
@@ -132,7 +132,7 @@
       0%, 100% { box-shadow: 0 14px 36px rgba(122, 34, 34, 0.45); }
       50% { box-shadow: 0 14px 44px rgba(122, 34, 34, 0.65), 0 0 0 10px rgba(122, 34, 34, 0.08); }
     }
-
+ 
     /* ═══════════ EMAIL POPUP ═══════════ */
     .email-popup {
       position: fixed;
@@ -194,7 +194,7 @@
       transition: background 0.3s;
     }
     .email-popup-form button:hover { background: var(--emerald); }
-
+ 
     /* ═══════════ HERO (full-screen) ═══════════ */
     .hero {
       position: relative;
@@ -265,7 +265,7 @@
       from { opacity: 0; transform: translateY(24px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
+ 
     /* ═══════════ BOOKING SECTION ═══════════ */
     .booking {
       background: var(--ivory-soft);
@@ -317,7 +317,7 @@
       font-weight: 500; color: var(--charcoal);
       display: block; margin-bottom: 3px;
     }
-
+ 
     .payment-strip {
       display: flex; align-items: center; gap: 12px;
       flex-wrap: wrap;
@@ -340,7 +340,7 @@
       transition: opacity 0.3s;
     }
     .pay-logo:hover { opacity: 1; }
-
+ 
     .book-widget {
       background: var(--ivory);
       padding: 40px 36px 28px;
@@ -377,7 +377,7 @@
     }
     .form-row input:focus { border-color: var(--emerald); }
     .form-row-double { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-
+ 
     .counter {
       display: flex; align-items: center; justify-content: space-between;
       padding: 8px 14px;
@@ -426,7 +426,7 @@
       margin-top: 6px;
       padding-left: 2px;
     }
-
+ 
     .check-availability {
       width: 100%; margin-top: 18px;
       background: var(--emerald); color: var(--ivory);
@@ -440,7 +440,7 @@
     .check-availability:hover { background: var(--emerald-deep); }
     .check-availability.inquiry-mode { background: var(--burgundy); }
     .check-availability.inquiry-mode:hover { background: var(--burgundy-bright); }
-
+ 
     .widget-note {
       text-align: center; margin-top: 14px;
       font-family: 'Cormorant Garamond', serif; font-style: italic;
@@ -468,7 +468,7 @@
       transition: color 0.3s;
     }
     .widget-contact a:hover { color: var(--burgundy); }
-
+ 
     /* ═══════════ INQUIRY MODAL ═══════════ */
     .inquiry-overlay {
       position: fixed; inset: 0;
@@ -548,7 +548,7 @@
       transition: background 0.3s;
     }
     .inquiry-submit:hover { background: var(--burgundy-bright); }
-
+ 
     /* ═══════════ SECTION HEADERS ═══════════ */
     section { padding: 140px 60px; }
     .section-header {
@@ -573,7 +573,7 @@
       max-width: 640px; margin: 0 auto;
       line-height: 1.5;
     }
-
+ 
     /* ═══════════ TRANSFORMATION ═══════════ */
     .transformation {
       background: var(--charcoal);
@@ -631,7 +631,7 @@
       font-size: 28px; line-height: 1.4;
       color: var(--ivory-dim);
     }
-
+ 
     /* ═══════════ REVIEWS ═══════════ */
     .reviews {
       background: var(--emerald-darker);
@@ -653,7 +653,7 @@
     .reviews .section-header h2 em { color: var(--brass-light); }
     .reviews .section-header p { color: rgba(245, 239, 230, 0.7); }
     .reviews .eyebrow { color: var(--brass-light); }
-
+ 
     .reviews-grid {
       display: grid;
       grid-template-columns: 1fr 1.4fr 1fr;
@@ -682,7 +682,7 @@
     .review-card:nth-child(1).in-view { transition-delay: 0.1s; }
     .review-card:nth-child(2).in-view { transition-delay: 0.25s; }
     .review-card:nth-child(3).in-view { transition-delay: 0.4s; }
-
+ 
     .review-card.featured {
       background: var(--emerald);
       color: var(--ivory);
@@ -708,7 +708,7 @@
       text-transform: uppercase;
       font-weight: 600;
     }
-
+ 
     .review-quote {
       font-family: 'Fraunces', serif; font-size: 110px;
       color: var(--brass); line-height: 0.4;
@@ -737,7 +737,7 @@
       content: '';
       width: 28px; height: 1px; background: var(--brass);
     }
-
+ 
     .reviews-platforms {
       text-align: center;
       margin-top: 96px;
@@ -791,7 +791,7 @@
       color: rgba(245, 239, 230, 0.6);
       margin-top: 4px;
     }
-
+ 
     /* ═══════════ MARQUEE ═══════════ */
     .marquee-section {
       background: var(--ivory);
@@ -824,7 +824,7 @@
       from { transform: translateX(0); }
       to { transform: translateX(-50%); }
     }
-
+ 
     /* ═══════════ GALLERY ═══════════ */
     .gallery {
       background: var(--ivory-soft);
@@ -856,7 +856,7 @@
     .g-7 { grid-column: span 3; grid-row: span 2; }
     .g-8 { grid-column: span 6; grid-row: span 2; }
     .g-9 { grid-column: span 3; grid-row: span 2; }
-
+ 
     /* ═══════════ OUR STORY ═══════════ */
     .story {
       background: var(--ivory);
@@ -877,7 +877,7 @@
       position: absolute;
       width: 78%; height: 88%;
       top: 0; left: 0;
-      background-image: url('https://res.cloudinary.com/dmrelunw0/image/upload/v1778161137/07-fireplace-mantel-detail_hhmiba.jpg');
+      background-image: url('https://res.cloudinary.com/dmrelunw0/image/upload/v1778161136/06-living-leather-chair_v9dbfd.jpg');
       background-size: cover;
       background-position: center;
       z-index: 2;
@@ -886,7 +886,7 @@
       position: absolute;
       width: 48%; height: 48%;
       bottom: 0; right: -8%;
-      background-image: url('https://res.cloudinary.com/dmrelunw0/image/upload/v1778161137/09-master-bed-dark_drwosh.jpg');
+      background-image: url('https://res.cloudinary.com/dmrelunw0/image/upload/v1778161137/08-bar-cart-butterfly_ugr6zi.jpg');
       background-size: cover;
       background-position: center;
       z-index: 3;
@@ -900,7 +900,7 @@
       border: 1px solid var(--brass);
       z-index: 1;
     }
-
+ 
     .story-text { padding-top: 24px; }
     .story-text .eyebrow { display: block; margin-bottom: 32px; }
     .story-text h2 {
@@ -956,7 +956,7 @@
       font-size: 19px;
       color: var(--warm-grey);
     }
-
+ 
     /* ═══════════ AMENITIES ═══════════ */
     .amenities {
       background: var(--emerald-deep);
@@ -996,7 +996,7 @@
       color: var(--ivory);
       line-height: 1.4;
     }
-
+ 
     /* ═══════════ POLICIES ═══════════ */
     .policies {
       background: var(--ivory);
@@ -1049,7 +1049,7 @@
       font-size: 16px;
       color: var(--warm-grey);
     }
-
+ 
     /* ═══════════ ELSEWHERE / OTAs ═══════════ */
     .elsewhere {
       background: var(--charcoal);
@@ -1097,7 +1097,7 @@
       letter-spacing: 0.28em; text-transform: uppercase;
       color: var(--warm-grey); margin-bottom: 8px;
     }
-
+ 
     /* ═══════════ CONTACT FORM ═══════════ */
     .contact {
       background: var(--ivory-soft);
@@ -1197,7 +1197,7 @@
       font-size: 18px;
       color: var(--warm-grey);
     }
-
+ 
     /* ═══════════ INSTAGRAM ═══════════ */
     .instagram {
       background: var(--ivory);
@@ -1240,7 +1240,7 @@
       transition: color 0.3s;
     }
     .instagram-cta a:hover { color: var(--emerald); }
-
+ 
     /* ═══════════ EMAIL CAPTURE ═══════════ */
     .email-capture {
       background: var(--ivory-soft);
@@ -1287,7 +1287,7 @@
       transition: background 0.3s;
     }
     .email-form button:hover { background: var(--emerald); }
-
+ 
     /* ═══════════ FOOTER ═══════════ */
     footer {
       background: var(--charcoal);
@@ -1320,7 +1320,7 @@
       transition: color 0.3s;
     }
     .footer-col a:hover { color: var(--brass-light); }
-
+ 
     .footer-trust {
       max-width: 1380px; margin: 0 auto;
       padding: 36px 0;
@@ -1349,7 +1349,7 @@
     .footer-pay:hover { opacity: 1; }
     .footer-ssl { display: flex; align-items: center; gap: 8px; color: var(--brass-light); }
     .footer-ssl svg { width: 14px; height: 14px; }
-
+ 
     .footer-bottom {
       max-width: 1380px; margin: 36px auto 0;
       display: flex; justify-content: space-between; align-items: center;
@@ -1357,7 +1357,7 @@
       font-family: 'DM Mono', monospace; font-size: 11px;
       letter-spacing: 0.18em; color: var(--warm-grey);
     }
-
+ 
     /* ═══════════ RESPONSIVE ═══════════ */
     @media (max-width: 1024px) {
       section { padding: 100px 32px; }
@@ -1386,71 +1386,71 @@
       .nav-links a:not(.book-btn) { display: none; }
       .nav-links { gap: 0; }
       .book-btn { padding: 9px 18px; font-size: 10px; }
-
+ 
       .hero { min-height: 580px; height: 100vh; }
       .hero-content { padding: 80px 24px 100px; }
       .hero h1 { font-size: clamp(40px, 11vw, 70px); }
       .hero-sub { font-size: 17px; padding: 0 8px; }
       .hero-eyebrow-bottom { bottom: 36px; font-size: 10px !important; padding: 0 16px; letter-spacing: 0.3em !important; }
-
+ 
       .booking { padding: 56px 20px; }
       .booking-info h2 { font-size: 34px; }
       .book-widget { padding: 32px 24px 24px; }
       .payment-strip { gap: 10px; padding-top: 16px; }
       .payment-strip .pay-label { width: 100%; text-align: center; margin-bottom: 4px; }
-
+ 
       section { padding: 80px 20px; }
       .section-header { margin-bottom: 64px; }
       .section-header h2 { font-size: 44px; }
       .section-header p { font-size: 17px; }
-
+ 
       .reviews { padding: 100px 20px; }
       .review-card { padding: 40px 28px 32px; }
       .review-card.featured { padding: 44px 28px 36px; }
       .platform-badges { gap: 36px; }
       .platform-badge .rating { font-size: 36px; }
-
+ 
       .marquee-section { padding: 80px 0 60px; }
       .marquee-section .section-header { padding: 0 20px; margin-bottom: 48px; }
       .marquee-item { width: 240px; height: 320px; }
       .marquee-track { animation-duration: 35s; }
-
+ 
       .transformation-grid { grid-template-columns: 1fr; }
       .amenities-grid { grid-template-columns: repeat(2, 1fr); }
       .gallery-grid { grid-template-columns: repeat(6, 1fr); grid-auto-rows: 130px; }
       .g-1, .g-2, .g-3, .g-4, .g-5, .g-6, .g-7, .g-8, .g-9 { grid-column: span 6; grid-row: span 2; }
-
+ 
       .story { padding: 80px 20px; }
       .story-text h2 { font-size: 38px; margin-bottom: 32px; }
       .story-pullquote { padding: 24px 24px; }
       .story-pullquote p { font-size: 21px; }
-
+ 
       .policy-block { padding: 32px 24px; }
       .policy-block h3 { font-size: 28px; margin-bottom: 20px; }
       .policy-list li { flex-direction: column; gap: 4px; padding: 12px 0; }
       .policy-list li strong { flex: none; font-size: 9px; }
-
+ 
       .ota-links { flex-direction: column; }
       .ota { border-right: none; border-bottom: 1px solid rgba(184, 153, 104, 0.2); }
       .ota:last-child { border-bottom: none; }
-
+ 
       .contact { padding: 80px 20px; }
       .contact-form { padding: 36px 24px 32px; }
       .contact-form .form-row-double { grid-template-columns: 1fr; gap: 18px; }
-
+ 
       .instagram-grid { gap: 6px; }
       .instagram-cta a { font-size: 22px; }
-
+ 
       .email-form { flex-direction: column; }
       .email-form button { padding: 16px; }
-
+ 
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
       .footer-brand h4 { font-size: 28px; }
       .footer-trust { flex-direction: column; align-items: flex-start; gap: 20px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; font-size: 10px; }
-
+ 
       .book-floating { padding: 13px 22px; font-size: 11px; bottom: 18px; right: 18px; }
-
+ 
       .email-popup {
         width: calc(100vw - 24px);
         left: 12px; right: 12px;
@@ -1458,14 +1458,14 @@
         padding: 22px 20px;
       }
       .email-popup h4 { font-size: 19px; }
-
+ 
       .inquiry-modal { padding: 32px 24px; }
       .inquiry-modal h3 { font-size: 24px; }
     }
   </style>
 </head>
 <body>
-
+ 
   <!-- ═══════════ NAV ═══════════ -->
   <nav class="nav" id="nav">
     <a href="#top" class="nav-logo">
@@ -1481,9 +1481,9 @@
       <a href="#book" class="book-btn">Book Now</a>
     </div>
   </nav>
-
+ 
   <a href="#book" class="book-floating">Book Now →</a>
-
+ 
   <!-- Email Popup -->
   <div class="email-popup" id="emailPopup">
     <button class="email-popup-close" id="emailPopupClose" aria-label="Close">×</button>
@@ -1495,7 +1495,7 @@
       <button type="submit">Get the List</button>
     </form>
   </div>
-
+ 
   <!-- INQUIRY MODAL -->
   <div class="inquiry-overlay" id="inquiryOverlay">
     <div class="inquiry-modal">
@@ -1530,27 +1530,27 @@
       </div>
     </div>
   </div>
-
+ 
   <!-- HERO (item #10 reordered subtitle, item #1 zoom) -->
   <section class="hero" id="top">
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h1 class="display">The Restored <em>Victorian</em>.</h1>
+      <h1 class="display">The Restored <em>Victorian</em></h1>
       <p class="hero-sub">Original 1890 mantels, crystal chandeliers, and rooms layered in velvet, brass, and time.</p>
     </div>
     <span class="eyebrow hero-eyebrow-bottom">Est. 1890 · The Nations · Nashville</span>
   </section>
-
+ 
   <!-- BOOKING -->
   <section class="booking" id="book">
     <div class="booking-inner">
-
+ 
       <div class="booking-info">
         <span class="eyebrow">Book Direct · Skip the Fees</span>
         <h2 class="display">Skip the fees.<br/><em>Get the keys faster</em>.</h2>
         <p>Book through our website and you save what Airbnb takes from your wallet — plus a few extras the platforms don't offer.</p>
-
+ 
         <ul class="perks">
           <li><span class="perks-icon">i</span><div><strong>No service fees.</strong>Save up to 14.2% versus booking through Airbnb.</div></li>
           <li><span class="perks-icon">ii</span><div><strong>Complimentary early check-in</strong>when available — request at booking.</div></li>
@@ -1558,7 +1558,7 @@
           <li><span class="perks-icon">iv</span><div><strong>Best-rate guarantee.</strong>See it cheaper anywhere? We'll match it.</div></li>
           <li><span class="roman-stat">v</span><div><strong>4 Bedrooms · 2 Baths · 10 Beds · Sleeps 12+</strong>Built for groups, weddings, and family reunions.</div></li>
         </ul>
-
+ 
         <div class="payment-strip">
           <span class="pay-label">We Accept</span>
           <svg class="pay-logo" viewBox="0 0 60 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Visa">
@@ -1591,11 +1591,11 @@
           </svg>
         </div>
       </div>
-
+ 
       <div class="book-widget" id="hospitable-widget-container">
         <span class="eyebrow">Check Availability</span>
         <h3 class="display">Pick your dates</h3>
-
+ 
         <div class="form-row form-row-double">
           <div>
             <label>Check In</label>
@@ -1606,7 +1606,7 @@
             <input type="date" id="checkOut" />
           </div>
         </div>
-
+ 
         <div class="form-row">
           <label>Guests</label>
           <div class="counter">
@@ -1615,7 +1615,7 @@
             <button type="button" class="counter-btn" id="guestPlus" aria-label="Increase guests">+</button>
           </div>
         </div>
-
+ 
         <div class="form-row">
           <label>Pets (Dogs)</label>
           <div class="counter">
@@ -1625,11 +1625,11 @@
           </div>
           <p class="pet-fee-note">Pet fee applies — total shown at checkout</p>
         </div>
-
+ 
         <button class="check-availability" id="checkAvailability">Check Availability →</button>
-
+ 
         <p class="widget-note">Real-time pricing · Instant confirmation</p>
-
+ 
         <div class="widget-trust">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
@@ -1637,15 +1637,15 @@
           </svg>
           Secure checkout via Stripe
         </div>
-
+ 
         <div class="widget-contact">
           <a href="#contact">Have questions? Contact us →</a>
         </div>
       </div>
-
+ 
     </div>
   </section>
-
+ 
   <!-- TRANSFORMATION (item #11 — Pastel Room rename) -->
   <section class="transformation" id="transformation">
     <div class="section-header">
@@ -1653,7 +1653,7 @@
       <h2 class="display">From forgotten<br/><em>to photographed</em>.</h2>
       <p>Restored, not replaced. Each room rebuilt around the bones the 1890s left behind.</p>
     </div>
-
+ 
     <div class="transformation-grid">
       <div class="trans-card">
         <img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161136/03-foyer-chandelier_prszk1.jpg" alt="Foyer with crystal chandelier" />
@@ -1699,12 +1699,12 @@
         </div>
       </div>
     </div>
-
+ 
     <div class="transformation-note">
       <p>"A century and a half of charm. The 1890s, restored."</p>
     </div>
   </section>
-
+ 
   <!-- REVIEWS -->
   <section class="reviews" id="reviews">
     <div class="section-header">
@@ -1712,7 +1712,7 @@
       <h2 class="display">What guests<br/><em>actually say</em>.</h2>
       <p>A 4.98 average across eighty-plus stays. Three favorites, in their own words.</p>
     </div>
-
+ 
     <div class="reviews-grid">
       <div class="review-card">
         <span class="review-quote">"</span>
@@ -1720,7 +1720,7 @@
         <p class="review-text">Beautifully decorated, comfortable, and clearly cared for — you can feel the love poured into every room. The neighborhood is picture-perfect, and our dog made friends on every walk. Couldn't recommend Giorgio and this home enough.</p>
         <div class="review-author">Berly · Kentucky · Stayed with a pet</div>
       </div>
-
+ 
       <div class="review-card featured">
         <span class="featured-tag">Featured</span>
         <span class="review-quote">"</span>
@@ -1728,7 +1728,7 @@
         <p class="review-text">Nine of us girls on a bachelorette weekend, scammed by another host last-minute. Giorgio took us in within hours — even pulled over on the side of the road on his vacation to make sure we got in safely. Spotless, gorgeous, plenty of room. 10/5 stars.</p>
         <div class="review-author">Sophia · Henderson, KY · Group trip</div>
       </div>
-
+ 
       <div class="review-card">
         <span class="review-quote">"</span>
         <div class="review-stars">★★★★★</div>
@@ -1736,7 +1736,7 @@
         <div class="review-author">Amanda · Knoxville, TN · Stayed with kids</div>
       </div>
     </div>
-
+ 
     <div class="reviews-platforms">
       <p>Verified across every platform we list on.</p>
       <div class="platform-badges">
@@ -1758,7 +1758,7 @@
       </div>
     </div>
   </section>
-
+ 
   <!-- MARQUEE -->
   <section class="marquee-section">
     <div class="section-header">
@@ -1785,7 +1785,7 @@
       <div class="marquee-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161137/12-vanity-desk-floral_qm6jbg.jpg" alt="" /></div>
     </div>
   </section>
-
+ 
   <!-- GALLERY -->
   <section class="gallery" id="gallery">
     <div class="section-header">
@@ -1805,7 +1805,7 @@
       <div class="gallery-item g-9"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161138/15-pink-bedroom-detail_rtxmqz.jpg" alt="" /></div>
     </div>
   </section>
-
+ 
   <!-- OUR STORY (items #2, #3, #4, #12, #13, #14, #15) -->
   <section class="story" id="story">
     <div class="story-grid">
@@ -1814,7 +1814,7 @@
         <div class="story-image-main"></div>
         <div class="story-image-accent"></div>
       </div>
-
+ 
       <div class="story-text">
         <span class="eyebrow">Our Story</span>
         <h2 class="display">
@@ -1822,16 +1822,16 @@
         </h2>
         <div class="story-text-body">
           <p>When we found this house, it was the most forgotten Victorian in the neighborhood. A century-old beauty on a corner lot, in the part of Nashville locals call The Nations. Original 1890 mantels, gorgeous crystal chandeliers, and show-stopping twelve-foot pocket doors with brass thumb-pulls.</p>
-
+ 
           <div class="story-pullquote">
             <p>"We didn't want to flip this house. We wanted to keep its soul."</p>
           </div>
-
+ 
           <p>The decision was easy: not to rebuild the house, but to restore all the charm and beauty of the past. The fireplace tile stayed. The pine floors stayed. We added crystal chandeliers, emerald velvet chesterfields, a brass leopard pedestal because we couldn't help ourselves, and the kind of bedding you sleep eleven hours in.</p>
-
+ 
           <p>During the renovation, neighbors stopped by daily to watch the progress. Now they stop to take pictures.</p>
         </div>
-
+ 
         <div class="story-signature">
           <span class="story-signature-line"></span>
           <span class="story-signature-text">— NooknKey</span>
@@ -1839,7 +1839,7 @@
       </div>
     </div>
   </section>
-
+ 
   <!-- AMENITIES (item #7 - Smart TV singular) -->
   <section class="amenities">
     <div class="section-header">
@@ -1847,7 +1847,7 @@
       <h2 class="display">Everything you'd<br/><em>expect</em>.</h2>
       <p>Built for groups, weddings, family reunions, and the kind of weekends you'll talk about for years.</p>
     </div>
-
+ 
     <div class="amenities-grid">
       <div class="amenity"><span class="amenity-icon">i</span><div class="amenity-label">Sleeps 12+<br/>10 beds</div></div>
       <div class="amenity"><span class="amenity-icon">ii</span><div class="amenity-label">Fully fenced<br/>backyard</div></div>
@@ -1863,14 +1863,14 @@
       <div class="amenity"><span class="amenity-icon">xii</span><div class="amenity-label">Coffee &<br/>welcome basket</div></div>
     </div>
   </section>
-
+ 
   <!-- POLICIES (item #8 - moderate cancellation) -->
   <section class="policies">
     <div class="section-header">
       <span class="eyebrow">The Fine Print</span>
       <h2 class="display">Stay <em>details</em>.</h2>
     </div>
-
+ 
     <div class="policies-grid">
       <div class="policy-block">
         <span class="eyebrow">House Rules</span>
@@ -1886,7 +1886,7 @@
         </ul>
         <p class="policy-block-note">We'll send a complete digital welcome book with WiFi password, parking, trash day, and our favorite coffee shops 24 hours before check-in.</p>
       </div>
-
+ 
       <div class="policy-block">
         <span class="eyebrow">Cancellation Policy</span>
         <h3 class="display">Plans change. We get it.</h3>
@@ -1899,13 +1899,13 @@
       </div>
     </div>
   </section>
-
+ 
   <!-- ELSEWHERE / OTAs -->
   <section class="elsewhere">
     <span class="eyebrow">Also Listed On</span>
     <h3 class="display">Prefer the platforms? <em>We're there too.</em></h3>
     <p>Same house, same care. Direct booking is a little cheaper.</p>
-
+ 
     <div class="ota-links">
       <a href="https://www.airbnb.com/rooms/1155186493699877057" class="ota" target="_blank" rel="noopener">
         <span class="ota-label">View on</span>
@@ -1925,7 +1925,7 @@
       </a>
     </div>
   </section>
-
+ 
   <!-- CONTACT FORM (item #9 - "right away") -->
   <section class="contact" id="contact">
     <div class="contact-inner">
@@ -1934,11 +1934,11 @@
         <h2 class="display">To speak with <em>someone</em>.</h2>
         <p>Have a question before you book, planning a special occasion, or coordinating a larger group? Send a message — we usually respond right away.</p>
       </div>
-
+ 
       <form class="contact-form" id="contactForm" action="https://formspree.io/f/xrejkglo" method="POST">
         <input type="hidden" name="_subject" value="NooknKey — New Contact Form Submission">
         <input type="hidden" name="form_type" value="contact">
-
+ 
         <div id="contactFields">
           <div class="form-row">
             <label>Full Name</label>
@@ -1960,7 +1960,7 @@
           </div>
           <button type="submit" class="contact-submit">Send Message →</button>
         </div>
-
+ 
         <div class="contact-success" id="contactSuccess">
           <p>Message sent.</p>
           <p>We'll be in touch shortly.</p>
@@ -1968,7 +1968,7 @@
       </form>
     </div>
   </section>
-
+ 
   <!-- INSTAGRAM -->
   <section class="instagram">
     <div class="section-header">
@@ -1976,7 +1976,7 @@
       <h2 class="display">Live from <em>@nooknkey</em>.</h2>
       <p>The rooms. The renovation. The before-and-afters you didn't see here.</p>
     </div>
-
+ 
     <div class="instagram-grid">
       <a href="https://instagram.com/nooknkey" target="_blank" rel="noopener" class="insta-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161136/03-foyer-chandelier_prszk1.jpg" alt="" /></a>
       <a href="https://instagram.com/nooknkey" target="_blank" rel="noopener" class="insta-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161138/17-emerald-living-wide_dianwp.jpg" alt="" /></a>
@@ -1988,26 +1988,26 @@
       <a href="https://instagram.com/nooknkey" target="_blank" rel="noopener" class="insta-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161137/12-vanity-desk-floral_qm6jbg.jpg" alt="" /></a>
       <a href="https://instagram.com/nooknkey" target="_blank" rel="noopener" class="insta-item"><img src="https://res.cloudinary.com/dmrelunw0/image/upload/v1778161137/07-fireplace-mantel-detail_hhmiba.jpg" alt="" /></a>
     </div>
-
+ 
     <div class="instagram-cta">
       <a href="https://instagram.com/nooknkey" target="_blank" rel="noopener">@nooknkey on Instagram →</a>
     </div>
   </section>
-
+ 
   <!-- EMAIL CAPTURE (item #5 - seasonal deals) -->
   <section class="email-capture">
     <div class="email-inner">
       <span class="eyebrow">The List</span>
       <h2 class="display">Future stays,<br/><em>future properties</em>.</h2>
       <p>Open dates, seasonal deals, the host's insider Nashville list — restaurants, hidden bars, weekend events — and first dibs on the next NooknKey property.</p>
-
+ 
       <form class="email-form" onsubmit="event.preventDefault(); alert('Email capture connects to MailerLite during Phase 3 setup.');">
         <input type="email" placeholder="your@email.com" required />
         <button type="submit">Join</button>
       </form>
     </div>
   </section>
-
+ 
   <!-- FOOTER (items #16, #20 — real Facebook URL, address kept) -->
   <footer>
     <div class="footer-grid">
@@ -2036,7 +2036,7 @@
         <a href="https://www.facebook.com/profile.php?id=61581390295068" target="_blank" rel="noopener">Facebook</a>
       </div>
     </div>
-
+ 
     <div class="footer-trust">
       <div class="footer-trust-block">
         <span class="footer-trust-label">Secure Payments</span>
@@ -2067,7 +2067,7 @@
           </svg>
         </div>
       </div>
-
+ 
       <div class="footer-trust-block footer-ssl">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
@@ -2076,20 +2076,20 @@
         <span class="footer-trust-label" style="color: var(--brass-light);">SSL Secured · Powered by Stripe</span>
       </div>
     </div>
-
+ 
     <div class="footer-bottom">
       <span>© 2026 NooknKey · 4810 Michigan Ave, Nashville, TN 37209</span>
       <span>Designed in Nashville</span>
     </div>
   </footer>
-
+ 
   <script>
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 60) nav.classList.add('scrolled');
       else nav.classList.remove('scrolled');
     });
-
+ 
     const bookSection = document.getElementById('book');
     const floatingBtn = document.querySelector('.book-floating');
     const bookObserver = new IntersectionObserver((entries) => {
@@ -2099,7 +2099,7 @@
       });
     }, { threshold: 0.3 });
     bookObserver.observe(bookSection);
-
+ 
     const emailPopup = document.getElementById('emailPopup');
     const emailPopupClose = document.getElementById('emailPopupClose');
     let popupShown = false;
@@ -2114,7 +2114,7 @@
       emailPopup.classList.remove('show');
       try { sessionStorage.setItem('nookPopupDismissed', '1'); } catch(e) {}
     });
-
+ 
     const reviewCards = document.querySelectorAll('.review-card');
     const reviewObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -2122,14 +2122,14 @@
       });
     }, { threshold: 0.2 });
     reviewCards.forEach(card => reviewObserver.observe(card));
-
+ 
     const GUEST_MAX_NORMAL = 12;
     const PET_MAX_NORMAL = 3;
     let guestCount = 1;
     let petCount = 0;
     let guestOverflow = false;
     let petOverflow = false;
-
+ 
     const guestDisplay = document.getElementById('guestDisplay');
     const guestPlus = document.getElementById('guestPlus');
     const guestMinus = document.getElementById('guestMinus');
@@ -2137,7 +2137,7 @@
     const petPlus = document.getElementById('petPlus');
     const petMinus = document.getElementById('petMinus');
     const checkBtn = document.getElementById('checkAvailability');
-
+ 
     function updateGuestDisplay() {
       if (guestOverflow) {
         guestDisplay.textContent = '12+ — inquiry required';
@@ -2149,7 +2149,7 @@
       guestMinus.disabled = (!guestOverflow && guestCount <= 1);
       updateCheckButton();
     }
-
+ 
     function updatePetDisplay() {
       if (petOverflow) {
         petDisplay.textContent = '3+ — inquiry required';
@@ -2164,7 +2164,7 @@
       petMinus.disabled = (!petOverflow && petCount <= 0);
       updateCheckButton();
     }
-
+ 
     function updateCheckButton() {
       if (guestOverflow || petOverflow) {
         checkBtn.textContent = 'Send Inquiry →';
@@ -2174,7 +2174,7 @@
         checkBtn.classList.remove('inquiry-mode');
       }
     }
-
+ 
     guestPlus.addEventListener('click', () => {
       if (guestOverflow) return;
       if (guestCount < GUEST_MAX_NORMAL) guestCount++;
@@ -2201,14 +2201,14 @@
       } else if (petCount > 0) petCount--;
       updatePetDisplay();
     });
-
+ 
     updateGuestDisplay();
     updatePetDisplay();
-
+ 
     const inquiryOverlay = document.getElementById('inquiryOverlay');
     const inquiryClose = document.getElementById('inquiryClose');
     const inquiryReason = document.getElementById('inquiryReason');
-
+ 
     checkBtn.addEventListener('click', () => {
       if (guestOverflow || petOverflow) {
         let reasons = [];
@@ -2226,18 +2226,18 @@
         alert('In Phase 3, this connects to the live Hospitable booking widget for instant confirmation.');
       }
     });
-
+ 
     inquiryClose.addEventListener('click', () => {
       inquiryOverlay.classList.remove('show');
     });
     inquiryOverlay.addEventListener('click', (e) => {
       if (e.target === inquiryOverlay) inquiryOverlay.classList.remove('show');
     });
-
+ 
     const contactForm = document.getElementById('contactForm');
     const contactFields = document.getElementById('contactFields');
     const contactSuccess = document.getElementById('contactSuccess');
-
+ 
     contactForm.addEventListener('submit', async (e) => {
       if (contactForm.action.includes('xrejkglo')) {
         e.preventDefault();
@@ -2265,6 +2265,6 @@
       }
     });
   </script>
-
+ 
 </body>
 </html>
