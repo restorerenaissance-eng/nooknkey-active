@@ -1490,8 +1490,10 @@
     <span class="eyebrow">A note from your hosts</span>
     <h4>Insider list for <em>Nashville</em>.</h4>
     <p>Where to eat, what to skip, the speakeasy locals don't post on Instagram. Plus open dates and direct-booking deals — never spam.</p>
-    <form class="email-popup-form" onsubmit="event.preventDefault(); this.querySelector('input').value=''; alert('Connected to MailerLite during Phase 3 setup.');">
-      <input type="email" placeholder="your@email.com" required />
+    <form class="email-popup-form" id="popupMailerForm" action="https://assets.mailerlite.com/jsonp/2320480/forms/187134311127844541/subscribe" method="post" target="_blank">
+      <input type="email" name="fields[email]" placeholder="your@email.com" required />
+      <input type="hidden" name="ml-submit" value="1" />
+      <input type="hidden" name="anticsrf" value="true" />
       <button type="submit">Get the List</button>
     </form>
   </div>
@@ -2001,8 +2003,10 @@
       <h2 class="display">Future stays,<br/><em>future properties</em>.</h2>
       <p>Open dates, seasonal deals, the host's insider Nashville list — restaurants, hidden bars, weekend events — and first dibs on the next NooknKey property.</p>
  
-      <form class="email-form" onsubmit="event.preventDefault(); alert('Email capture connects to MailerLite during Phase 3 setup.');">
-        <input type="email" placeholder="your@email.com" required />
+      <form class="email-form" id="captureMailerForm" action="https://assets.mailerlite.com/jsonp/2320480/forms/187134311127844541/subscribe" method="post" target="_blank">
+        <input type="email" name="fields[email]" placeholder="your@email.com" required />
+        <input type="hidden" name="ml-submit" value="1" />
+        <input type="hidden" name="anticsrf" value="true" />
         <button type="submit">Join</button>
       </form>
     </div>
@@ -2223,7 +2227,15 @@
           alert('Please select check-in and check-out dates.');
           return;
         }
-        alert('In Phase 3, this connects to the live Hospitable booking widget for instant confirmation.');
+        // Build Hospitable booking URL with pre-filled dates and guest count
+        const hospitableBase = 'https://booking.hospitable.com/widget/a1c14b03-4952-4c60-9c6a-58bc29a45f25/2281011';
+        const params = new URLSearchParams({
+          checkIn: checkIn,
+          checkOut: checkOut,
+          adults: guestCount.toString(),
+          pets: petCount.toString()
+        });
+        window.location.href = hospitableBase + '?' + params.toString();
       }
     });
  
