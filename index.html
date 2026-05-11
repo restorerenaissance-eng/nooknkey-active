@@ -274,7 +274,7 @@
     }
     .booking-inner {
       max-width: 1180px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1.1fr;
+      display: grid; grid-template-columns: 1.3fr 0.85fr;
       gap: 72px; align-items: center;
     }
     .booking-info { padding-right: 16px; }
@@ -360,6 +360,45 @@
       letter-spacing: -0.01em;
       text-align: center; margin-bottom: 26px;
       color: var(--charcoal);
+    }
+    .book-widget h3 em {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--emerald);
+    }
+ 
+    /* Hospitable iframe wrapping — narrower container, content fills interior cleanly */
+    .book-widget-iframe {
+      padding: 36px 24px 28px;
+      max-width: 460px;
+      margin: 0 auto;
+    }
+    .book-iframe-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--brass);
+      margin: 0 auto;
+      opacity: 0.6;
+    }
+    .book-iframe-wrap {
+      position: relative;
+      background: transparent;
+      margin: 18px 0;
+    }
+    .book-iframe-wrap iframe {
+      width: 100%;
+      height: 640px;
+      border: 0;
+      background: transparent;
+      display: block;
+    }
+    @media (max-width: 1024px) {
+      .book-widget-iframe { padding: 32px 18px 24px; max-width: 480px; }
+      .book-iframe-wrap iframe { height: 700px; }
+    }
+    @media (max-width: 700px) {
+      .book-widget-iframe { padding: 28px 14px 22px; max-width: 100%; }
+      .book-iframe-wrap iframe { height: 760px; }
     }
     .form-row { margin-bottom: 14px; }
     .form-row label {
@@ -1594,43 +1633,21 @@
         </div>
       </div>
  
-      <div class="book-widget" id="hospitable-widget-container">
+      <!-- BOOKING WIDGET — Hospitable iframe inside the styled container -->
+      <div class="book-widget book-widget-iframe" id="hospitable-widget-container">
         <span class="eyebrow">Check Availability</span>
-        <h3 class="display">Pick your dates</h3>
+        <h3 class="display">Real-time <em>pricing</em></h3>
  
-        <div class="form-row form-row-double">
-          <div>
-            <label>Check In</label>
-            <input type="date" id="checkIn" />
-          </div>
-          <div>
-            <label>Check Out</label>
-            <input type="date" id="checkOut" />
-          </div>
+        <div class="book-iframe-divider"></div>
+ 
+        <div class="book-iframe-wrap">
+          <iframe id="booking-iframe" title="Book NooknKey"
+            sandbox="allow-top-navigation allow-scripts allow-same-origin allow-forms allow-popups"
+            src="https://booking.hospitable.com/widget/a1c14b03-4952-4c60-9c6a-58bc29a45f25/2281011"
+            loading="lazy"></iframe>
         </div>
  
-        <div class="form-row">
-          <label>Guests</label>
-          <div class="counter">
-            <button type="button" class="counter-btn" id="guestMinus" aria-label="Decrease guests">−</button>
-            <span class="counter-display" id="guestDisplay">1 Guest</span>
-            <button type="button" class="counter-btn" id="guestPlus" aria-label="Increase guests">+</button>
-          </div>
-        </div>
- 
-        <div class="form-row">
-          <label>Pets (Dogs)</label>
-          <div class="counter">
-            <button type="button" class="counter-btn" id="petMinus" aria-label="Decrease pets">−</button>
-            <span class="counter-display" id="petDisplay">No pets</span>
-            <button type="button" class="counter-btn" id="petPlus" aria-label="Increase pets">+</button>
-          </div>
-          <p class="pet-fee-note">Pet fee applies — total shown at checkout</p>
-        </div>
- 
-        <button class="check-availability" id="checkAvailability">Check Availability →</button>
- 
-        <p class="widget-note">Real-time pricing · Instant confirmation</p>
+        <div class="book-iframe-divider"></div>
  
         <div class="widget-trust">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -2127,126 +2144,8 @@
     }, { threshold: 0.2 });
     reviewCards.forEach(card => reviewObserver.observe(card));
  
-    const GUEST_MAX_NORMAL = 12;
-    const PET_MAX_NORMAL = 3;
-    let guestCount = 1;
-    let petCount = 0;
-    let guestOverflow = false;
-    let petOverflow = false;
- 
-    const guestDisplay = document.getElementById('guestDisplay');
-    const guestPlus = document.getElementById('guestPlus');
-    const guestMinus = document.getElementById('guestMinus');
-    const petDisplay = document.getElementById('petDisplay');
-    const petPlus = document.getElementById('petPlus');
-    const petMinus = document.getElementById('petMinus');
-    const checkBtn = document.getElementById('checkAvailability');
- 
-    function updateGuestDisplay() {
-      if (guestOverflow) {
-        guestDisplay.textContent = '12+ — inquiry required';
-        guestDisplay.classList.add('overflow');
-      } else {
-        guestDisplay.textContent = guestCount === 1 ? '1 Guest' : guestCount + ' Guests';
-        guestDisplay.classList.remove('overflow');
-      }
-      guestMinus.disabled = (!guestOverflow && guestCount <= 1);
-      updateCheckButton();
-    }
- 
-    function updatePetDisplay() {
-      if (petOverflow) {
-        petDisplay.textContent = '3+ — inquiry required';
-        petDisplay.classList.add('overflow');
-      } else if (petCount === 0) {
-        petDisplay.textContent = 'No pets';
-        petDisplay.classList.remove('overflow');
-      } else {
-        petDisplay.textContent = petCount === 1 ? '1 Dog' : petCount + ' Dogs';
-        petDisplay.classList.remove('overflow');
-      }
-      petMinus.disabled = (!petOverflow && petCount <= 0);
-      updateCheckButton();
-    }
- 
-    function updateCheckButton() {
-      if (guestOverflow || petOverflow) {
-        checkBtn.textContent = 'Send Inquiry →';
-        checkBtn.classList.add('inquiry-mode');
-      } else {
-        checkBtn.textContent = 'Check Availability →';
-        checkBtn.classList.remove('inquiry-mode');
-      }
-    }
- 
-    guestPlus.addEventListener('click', () => {
-      if (guestOverflow) return;
-      if (guestCount < GUEST_MAX_NORMAL) guestCount++;
-      else guestOverflow = true;
-      updateGuestDisplay();
-    });
-    guestMinus.addEventListener('click', () => {
-      if (guestOverflow) {
-        guestOverflow = false;
-        guestCount = GUEST_MAX_NORMAL;
-      } else if (guestCount > 1) guestCount--;
-      updateGuestDisplay();
-    });
-    petPlus.addEventListener('click', () => {
-      if (petOverflow) return;
-      if (petCount < PET_MAX_NORMAL) petCount++;
-      else petOverflow = true;
-      updatePetDisplay();
-    });
-    petMinus.addEventListener('click', () => {
-      if (petOverflow) {
-        petOverflow = false;
-        petCount = PET_MAX_NORMAL;
-      } else if (petCount > 0) petCount--;
-      updatePetDisplay();
-    });
- 
-    updateGuestDisplay();
-    updatePetDisplay();
- 
-    const inquiryOverlay = document.getElementById('inquiryOverlay');
-    const inquiryClose = document.getElementById('inquiryClose');
-    const inquiryReason = document.getElementById('inquiryReason');
- 
-    checkBtn.addEventListener('click', () => {
-      if (guestOverflow || petOverflow) {
-        let reasons = [];
-        if (guestOverflow) reasons.push('groups over 12');
-        if (petOverflow) reasons.push('more than 3 dogs');
-        inquiryReason.textContent = `For ${reasons.join(' and ')}, we just need to confirm a few details first. Send the request and we'll respond right away.`;
-        inquiryOverlay.classList.add('show');
-      } else {
-        const checkIn = document.getElementById('checkIn').value;
-        const checkOut = document.getElementById('checkOut').value;
-        if (!checkIn || !checkOut) {
-          alert('Please select check-in and check-out dates.');
-          return;
-        }
-        // Build Hospitable booking URL with pre-filled dates and guest count
-        const hospitableBase = 'https://booking.hospitable.com/widget/a1c14b03-4952-4c60-9c6a-58bc29a45f25/2281011';
-        const params = new URLSearchParams({
-          checkIn: checkIn,
-          checkOut: checkOut,
-          adults: guestCount.toString(),
-          pets: petCount.toString()
-        });
-        window.location.href = hospitableBase + '?' + params.toString();
-      }
-    });
- 
-    inquiryClose.addEventListener('click', () => {
-      inquiryOverlay.classList.remove('show');
-    });
-    inquiryOverlay.addEventListener('click', (e) => {
-      if (e.target === inquiryOverlay) inquiryOverlay.classList.remove('show');
-    });
- 
-    const contactForm = document.getElementById('contactForm');
+    // Counter & inquiry JS removed — Hospitable iframe handles guest selection, dates, and overflow inquiries directly
+const contactForm = document.getElementById('contactForm');
     const contactFields = document.getElementById('contactFields');
     const contactSuccess = document.getElementById('contactSuccess');
  
