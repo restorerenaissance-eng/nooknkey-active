@@ -146,12 +146,7 @@
   </div>
 
 <script>
-/* ================================================================
-   CONFIG — set this ONE value before going live.
-   Paste your Google Apps Script web-app URL (deployed as "Anyone").
-   See SETUP-email-capture-system.md, Step 3.
-   ================================================================ */
-const BACKEND_URL = "PASTE_YOUR_APPS_SCRIPT_URL_HERE";
+const BACKEND_URL = "/api/capture";
 
 /* Which placard was scanned? Set via the QR link, e.g. ...?r=kitchen */
 const params = new URLSearchParams(location.search);
