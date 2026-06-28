@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Welcome to NooknKey · Unlock Your WiFi + House Guide</title>
+<meta name="robots" content="noindex" />
+<!--
+  NooknKey — Guest Welcome Gate  (deploy as /welcome.html)
+  ------------------------------------------------------------------
+  Guest scans a QR placard -> lands here -> enters name + email (phone
+  optional) to UNLOCK the WiFi password and the full digital guide.
+
+  The WiFi password is NOT in this file. It is returned by the backend
+  ONLY after a guest submits, so nobody can "view source" past the gate.
+
+  Before going live, set ONE value: BACKEND_URL (your Apps Script URL).
+-->
+<style>
+  :root{
+    --ink:#1F2421;--emerald:#1F4A3D;--emerald-deep:#163A30;--gold:#C9A24B;
+    --gold-soft:#E3CD96;--cream:#FAF7F2;--line:rgba(31,74,61,.16);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--emerald);min-height:100vh;min-height:100dvh;
+    display:flex;flex-direction:column;align-items:center;justify-content:flex-start;}
+  .wrap{width:100%;max-width:480px;padding:0 20px 48px;margin:0 auto;}
+  .crest{width:100%;text-align:center;padding:34px 0 26px;}
+  .wordmark{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;color:var(--cream);
+    letter-spacing:.18em;font-size:15px;font-weight:600;text-transform:uppercase;}
+  .wordmark .amp{color:var(--gold);}
+  .rule{width:46px;height:1px;background:var(--gold);margin:14px auto 0;opacity:.8;}
+  .card{background:var(--cream);border-radius:18px;padding:30px 24px 26px;
+    box-shadow:0 24px 60px rgba(0,0,0,.28);border:1px solid rgba(201,162,75,.35);}
+  .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);
+    font-weight:700;text-align:center;margin:0 0 10px;}
+  h1{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;font-size:30px;line-height:1.12;
+    text-align:center;margin:0 0 12px;color:var(--emerald-deep);}
+  h1 em{font-style:italic;color:var(--gold);}
+  .lede{text-align:center;font-size:15px;line-height:1.5;color:#46514b;margin:0 auto 22px;max-width:340px;}
+  .perks{list-style:none;margin:0 0 22px;padding:0;display:grid;gap:10px;}
+  .perks li{display:flex;gap:11px;align-items:flex-start;font-size:14px;line-height:1.4;color:#3a443f;}
+  .perks .dot{flex:0 0 auto;width:18px;height:18px;border-radius:50%;background:var(--emerald);
+    color:var(--cream);font-size:11px;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+  form{display:grid;gap:12px;}
+  label{font-size:12px;font-weight:600;color:var(--emerald-deep);letter-spacing:.02em;}
+  .field{display:grid;gap:5px;}
+  input{width:100%;font-size:16px;padding:13px 14px;border-radius:11px;border:1px solid var(--line);
+    background:#fff;color:var(--ink);outline:none;font-family:inherit;}
+  input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,162,75,.18);}
+  .opt{font-weight:400;color:#8a938d;}
+  button{margin-top:6px;width:100%;cursor:pointer;border:0;font-family:inherit;font-size:16px;
+    font-weight:700;letter-spacing:.02em;color:var(--cream);background:var(--emerald);
+    padding:15px 18px;border-radius:12px;transition:transform .04s ease,background .2s ease;}
+  button:hover{background:var(--emerald-deep);}
+  button:active{transform:translateY(1px);}
+  button[disabled]{opacity:.6;cursor:default;}
+  .fine{font-size:11px;color:#8a938d;text-align:center;margin:14px 2px 0;line-height:1.5;}
+  .fine a{color:var(--emerald);}
+  .err{display:none;background:#fbeaea;border:1px solid #e6bcbc;color:#9a3434;font-size:13px;
+    padding:10px 12px;border-radius:10px;}
+  .reveal{display:none;}
+  .reveal.show{display:block;animation:rise .5s ease both;}
+  @keyframes rise{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+  .wifi-card{background:var(--emerald);color:var(--cream);border-radius:14px;padding:20px 18px;
+    margin:6px 0 16px;border:1px solid rgba(201,162,75,.4);}
+  .wifi-card .lab{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft);}
+  .wifi-card .val{font-size:22px;font-weight:700;margin:3px 0 14px;word-break:break-all;
+    font-family:"Cormorant Garamond",Georgia,serif;}
+  .copy{display:inline-flex;align-items:center;gap:7px;cursor:pointer;background:rgba(250,247,242,.12);
+    border:1px solid rgba(227,205,150,.5);color:var(--cream);font-size:12px;font-weight:600;
+    padding:8px 12px;border-radius:9px;}
+  .guide-btn{display:block;text-align:center;text-decoration:none;background:var(--gold);color:#2a2410;
+    font-weight:800;font-size:16px;padding:15px;border-radius:12px;letter-spacing:.02em;}
+  .reveal h2{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;font-size:26px;
+    text-align:center;color:var(--emerald-deep);margin:4px 0 6px;}
+  .reveal .sub{text-align:center;font-size:14px;color:#46514b;margin:0 0 18px;}
+  .footnote{color:rgba(250,247,242,.7);font-size:11px;text-align:center;margin:22px 0 0;letter-spacing:.04em;}
+  @media (min-width:430px){ h1{font-size:33px;} }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="wrap">
+    <div class="crest">
+      <div class="wordmark">Nook <span class="amp">&amp;</span> Key</div>
+      <div class="rule"></div>
+    </div>
+
+    <!-- ============ CAPTURE STATE ============ -->
+    <div class="card" id="gate">
+      <p class="eyebrow">Welcome Home</p>
+      <h1>Your WiFi &amp; the <em>insider Nashville list</em></h1>
+      <p class="lede">Drop your name and we'll unlock the house WiFi, the full digital guide, and the local spots we send every guest to.</p>
+
+      <ul class="perks">
+        <li><span class="dot">i</span><span><strong>Instant WiFi password</strong> — connect every device in seconds.</span></li>
+        <li><span class="dot">ii</span><span><strong>The full house guide</strong> — check-out, trash day, the coffee bar, everything.</span></li>
+        <li><span class="dot">iii</span><span><strong>The local list</strong> — where to eat, the speakeasy locals don't post.</span></li>
+      </ul>
+
+      <div class="err" id="err">Something went wrong. Check your connection and try again.</div>
+
+      <form id="capForm" novalidate>
+        <div class="field">
+          <label for="firstName">First name</label>
+          <input id="firstName" name="firstName" type="text" autocomplete="given-name" required placeholder="Your first name" />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="you@email.com" />
+        </div>
+        <div class="field">
+          <label for="phone">Mobile <span class="opt">(optional — for check-out reminders &amp; member deals)</span></label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(555) 555-5555" />
+        </div>
+        <button type="submit" id="submitBtn">Unlock WiFi + Guide →</button>
+      </form>
+
+      <p class="fine">No spam, ever. Unsubscribe anytime.<br>By continuing you agree to our <a href="https://thenooknkey.com/privacy-policy.html" target="_blank" rel="noopener">privacy policy</a>.</p>
+    </div>
+
+    <!-- ============ SUCCESS / REVEAL STATE ============ -->
+    <div class="card reveal" id="reveal">
+      <p class="eyebrow">You're In</p>
+      <h2>Welcome, <span id="guestName">friend</span>.</h2>
+      <p class="sub">Here's your WiFi — tap to copy the password.</p>
+
+      <div class="wifi-card">
+        <div class="lab">Network</div>
+        <div class="val" id="wifiNetwork">TMobile-44C8</div>
+        <div class="lab">Password</div>
+        <div class="val" id="wifiPassword">•••••••••</div>
+        <span class="copy" id="copyBtn" role="button" tabindex="0">⧉ Copy password</span>
+      </div>
+
+      <a class="guide-btn" id="guideBtn" href="#" target="_blank" rel="noopener">Open the Full House Guide →</a>
+      <p class="fine">Save this page — your guide lives here for the whole stay.</p>
+    </div>
+
+    <p class="footnote">NooknKey · 4810 Michigan Ave · The Nations, Nashville</p>
+  </div>
+
+<script>
+/* ================================================================
+   CONFIG — set this ONE value before going live.
+   Paste your Google Apps Script web-app URL (deployed as "Anyone").
+   See SETUP-email-capture-system.md, Step 3.
+   ================================================================ */
+const BACKEND_URL = "PASTE_YOUR_APPS_SCRIPT_URL_HERE";
+
+/* Which placard was scanned? Set via the QR link, e.g. ...?r=kitchen */
+const params = new URLSearchParams(location.search);
+const room = params.get("r") || "unknown";
+
+const form = document.getElementById("capForm");
+const btn = document.getElementById("submitBtn");
+const errBox = document.getElementById("err");
+
+form.addEventListener("submit", async function (e) {
+  e.preventDefault();
+  errBox.style.display = "none";
+
+  const firstName = document.getElementById("firstName").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+
+  if (!firstName || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+    errBox.textContent = "Please enter your first name and a valid email.";
+    errBox.style.display = "block";
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = "Unlocking…";
+
+  const payload = {
+    firstName, email, phone, room,
+    property: "NooknKey", ts: new Date().toISOString()
+  };
+
+  try {
+    const res = await fetch(BACKEND_URL, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" }, // avoids CORS preflight
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    if (!data || data.ok !== true) throw new Error("backend");
+
+    document.getElementById("guestName").textContent = firstName;
+    document.getElementById("wifiNetwork").textContent = data.wifiNetwork || "TMobile-44C8";
+    document.getElementById("wifiPassword").textContent = data.wifiPassword || "";
+    document.getElementById("guideBtn").href = data.guideUrl || "https://thenooknkey.com/guide.html";
+
+    document.getElementById("gate").style.display = "none";
+    document.getElementById("reveal").classList.add("show");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    document.getElementById("copyBtn").addEventListener("click", function () {
+      const pw = document.getElementById("wifiPassword").textContent;
+      navigator.clipboard && navigator.clipboard.writeText(pw);
+      this.textContent = "✓ Copied";
+      setTimeout(() => { this.textContent = "⧉ Copy password"; }, 2000);
+    });
+  } catch (err) {
+    errBox.textContent = "Couldn't connect. Check WiFi instructions on the placard, or try again.";
+    errBox.style.display = "block";
+    btn.disabled = false;
+    btn.textContent = "Unlock WiFi + Guide →";
+  }
+});
+</script>
+</body>
+</html>
