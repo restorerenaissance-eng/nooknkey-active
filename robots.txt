@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /welcome
+Disallow: /guide
+
+Sitemap: https://thenooknkey.com/sitemap.xml
